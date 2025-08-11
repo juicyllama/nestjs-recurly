@@ -20,6 +20,8 @@ jobs:
     pr_checks:
         name: 'Pull Request Package'
         runs-on: ubuntu-latest
+        env:
+            RECURLY_API_KEY: ${{ secrets.RECURLY_API_KEY }}
         steps:
 
             -   name: 'Checkout'
@@ -43,5 +45,3 @@ jobs:
 
             -   name: Test
                 run: npm run test
-        env:
-            RECURLY_API_KEY: ${{ secrets.RECURLY_API_KEY }}
