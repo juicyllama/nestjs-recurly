@@ -27,9 +27,6 @@ jobs:
                 with:
                     token: ${{ secrets.GH_CI_CD_RELEASE }}
 
-                env:
-                    RECURLY_API_KEY: ${{ secrets.RECURLY_API_KEY }}
-
             -   name: Install Node.js
                 uses: actions/setup-node@v4
                 with:
@@ -46,4 +43,5 @@ jobs:
 
             -   name: Test
                 run: npm run test
-
+        env:
+            RECURLY_API_KEY: ${{ secrets.RECURLY_API_KEY }}
