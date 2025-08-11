@@ -3,6 +3,7 @@ export { RecurlyV3Module } from './v3/v3.module'
 
 //Service
 export { AccountsService } from './v3/accounts/accounts.service'
+export { AccountNotesService } from './v3/accounts/notes/notes.service'
 
 //Config
 export { RecurlyConfigDto } from './config/config.dto'
@@ -17,15 +18,9 @@ export {
 	RecurlyAddress,
 	RecurlyBillingInfo,
 	RecurlyShippingAddress,
-	// Backward compatibility - deprecated, use Recurly-prefixed versions instead
-	RecurlyAccountBalance as AccountBalance,
-	RecurlyAccountListResponse as AccountListResponse,
-	RecurlyExternalSubscriptionListResponse as ExternalSubscriptionListResponse,
-	RecurlyAccountState as AccountState,
-	RecurlyAddress as Address,
-	RecurlyBillingInfo as BillingInfo,
-	RecurlyShippingAddress as ShippingAddress,
 } from './v3/accounts/accounts.types'
+
+export { RecurlyAccountNote, RecurlyAccountNoteListResponse, RecurlyUser } from './v3/accounts/notes/notes.types'
 
 //DTOs
 export {
@@ -35,11 +30,6 @@ export {
 	RecurlyAddressDto,
 	RecurlyBillingInfoCreateDto,
 	RecurlyShippingAddressDto,
-	// Backward compatibility - deprecated, use Recurly-prefixed versions instead
-	RecurlyListAccountsQueryDto as ListAccountsQueryDto,
-	RecurlyCreateAccountDto as CreateAccountDto,
-	RecurlyUpdateAccountDto as UpdateAccountDto,
-	RecurlyAddressDto as AddressDto,
-	RecurlyBillingInfoCreateDto as BillingInfoCreateDto,
-	RecurlyShippingAddressDto as ShippingAddressDto,
 } from './v3/accounts/accounts.dto'
+
+export { RecurlyListAccountNotesQueryDto } from './v3/accounts/notes/notes.dto'
