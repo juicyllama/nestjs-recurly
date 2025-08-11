@@ -1,11 +1,11 @@
 import {
 	RecurlyAccount,
-	AccountListResponse,
-	AccountBalance,
-	ExternalSubscriptionListResponse,
-	PreferredLocale,
-	BillTo,
-	TransactionType,
+	RecurlyAccountListResponse,
+	RecurlyAccountBalance,
+	RecurlyExternalSubscriptionListResponse,
+	RecurlyPreferredLocale,
+	RecurlyBillTo,
+	RecurlyTransactionType,
 } from './accounts.types'
 import { Type } from 'class-transformer'
 import {
@@ -22,7 +22,7 @@ import {
 } from 'class-validator'
 
 // List Accounts Query DTO
-export class ListAccountsQueryDto {
+export class RecurlyListAccountsQueryDto {
 	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
@@ -62,7 +62,7 @@ export class ListAccountsQueryDto {
 }
 
 // Address DTO
-export class AddressDto {
+export class RecurlyAddressDto {
 	@IsOptional()
 	@IsString()
 	phone?: string
@@ -97,7 +97,7 @@ export class AddressDto {
 }
 
 // Custom Field DTO
-export class CustomFieldDto {
+export class RecurlyCustomFieldDto {
 	@IsString()
 	name!: string
 
@@ -107,7 +107,7 @@ export class CustomFieldDto {
 }
 
 // Account Acquisition DTO
-export class AccountAcquisitionDto {
+export class RecurlyAccountAcquisitionDto {
 	@IsOptional()
 	@ValidateNested()
 	@Type(() => Object)
@@ -134,7 +134,7 @@ export class AccountAcquisitionDto {
 }
 
 // External Account DTO
-export class ExternalAccountDto {
+export class RecurlyExternalAccountDto {
 	@IsOptional()
 	@IsString()
 	external_account_code?: string
@@ -145,7 +145,7 @@ export class ExternalAccountDto {
 }
 
 // Shipping Address DTO
-export class ShippingAddressDto {
+export class RecurlyShippingAddressDto {
 	@IsOptional()
 	@IsString()
 	nickname?: string
@@ -209,7 +209,7 @@ export class ShippingAddressDto {
 }
 
 // Billing Info Create DTO
-export class BillingInfoCreateDto {
+export class RecurlyBillingInfoCreateDto {
 	@IsOptional()
 	@IsString()
 	token_id?: string
@@ -231,8 +231,8 @@ export class BillingInfoCreateDto {
 
 	@IsOptional()
 	@ValidateNested()
-	@Type(() => AddressDto)
-	address?: AddressDto
+	@Type(() => RecurlyAddressDto)
+	address?: RecurlyAddressDto
 
 	@IsOptional()
 	@IsString()
@@ -281,7 +281,7 @@ export class BillingInfoCreateDto {
 
 	@IsOptional()
 	@IsEnum(['moto'])
-	transaction_type?: TransactionType
+	transaction_type?: RecurlyTransactionType
 
 	@IsOptional()
 	@IsString()
@@ -321,27 +321,27 @@ export class BillingInfoCreateDto {
 }
 
 // Create Account DTO
-export class CreateAccountDto {
+export class RecurlyCreateAccountDto {
 	@IsString()
 	@MaxLength(50)
 	code!: string
 
 	@IsOptional()
 	@ValidateNested()
-	@Type(() => AccountAcquisitionDto)
-	acquisition?: AccountAcquisitionDto
+	@Type(() => RecurlyAccountAcquisitionDto)
+	acquisition?: RecurlyAccountAcquisitionDto
 
 	@IsOptional()
 	@IsArray()
 	@ValidateNested({ each: true })
-	@Type(() => ExternalAccountDto)
-	external_accounts?: ExternalAccountDto[]
+	@Type(() => RecurlyExternalAccountDto)
+	external_accounts?: RecurlyExternalAccountDto[]
 
 	@IsOptional()
 	@IsArray()
 	@ValidateNested({ each: true })
-	@Type(() => ShippingAddressDto)
-	shipping_addresses?: ShippingAddressDto[]
+	@Type(() => RecurlyShippingAddressDto)
+	shipping_addresses?: RecurlyShippingAddressDto[]
 
 	@IsOptional()
 	@IsString()
@@ -388,7 +388,7 @@ export class CreateAccountDto {
 		'tr-TR',
 		'zh-CN',
 	])
-	preferred_locale?: PreferredLocale
+	preferred_locale?: RecurlyPreferredLocale
 
 	@IsOptional()
 	@IsString()
@@ -444,11 +444,11 @@ export class CreateAccountDto {
 
 	@IsOptional()
 	@IsEnum(['parent', 'self'])
-	bill_to?: BillTo
+	bill_to?: RecurlyBillTo
 
 	@IsOptional()
 	@IsEnum(['moto'])
-	transaction_type?: TransactionType
+	transaction_type?: RecurlyTransactionType
 
 	@IsOptional()
 	@IsString()
@@ -460,19 +460,19 @@ export class CreateAccountDto {
 
 	@IsOptional()
 	@ValidateNested()
-	@Type(() => AddressDto)
-	address?: AddressDto
+	@Type(() => RecurlyAddressDto)
+	address?: RecurlyAddressDto
 
 	@IsOptional()
 	@ValidateNested()
-	@Type(() => BillingInfoCreateDto)
-	billing_info?: BillingInfoCreateDto
+	@Type(() => RecurlyBillingInfoCreateDto)
+	billing_info?: RecurlyBillingInfoCreateDto
 
 	@IsOptional()
 	@IsArray()
 	@ValidateNested({ each: true })
-	@Type(() => CustomFieldDto)
-	custom_fields?: CustomFieldDto[]
+	@Type(() => RecurlyCustomFieldDto)
+	custom_fields?: RecurlyCustomFieldDto[]
 
 	@IsOptional()
 	@IsString()
@@ -480,7 +480,7 @@ export class CreateAccountDto {
 }
 
 // Update Account DTO
-export class UpdateAccountDto {
+export class RecurlyUpdateAccountDto {
 	@IsOptional()
 	@IsString()
 	@MaxLength(255)
@@ -526,7 +526,7 @@ export class UpdateAccountDto {
 		'tr-TR',
 		'zh-CN',
 	])
-	preferred_locale?: PreferredLocale
+	preferred_locale?: RecurlyPreferredLocale
 
 	@IsOptional()
 	@IsString()
@@ -582,11 +582,11 @@ export class UpdateAccountDto {
 
 	@IsOptional()
 	@IsEnum(['parent', 'self'])
-	bill_to?: BillTo
+	bill_to?: RecurlyBillTo
 
 	@IsOptional()
 	@IsEnum(['moto'])
-	transaction_type?: TransactionType
+	transaction_type?: RecurlyTransactionType
 
 	@IsOptional()
 	@IsString()
@@ -598,19 +598,19 @@ export class UpdateAccountDto {
 
 	@IsOptional()
 	@ValidateNested()
-	@Type(() => AddressDto)
-	address?: AddressDto
+	@Type(() => RecurlyAddressDto)
+	address?: RecurlyAddressDto
 
 	@IsOptional()
 	@ValidateNested()
-	@Type(() => BillingInfoCreateDto)
-	billing_info?: BillingInfoCreateDto
+	@Type(() => RecurlyBillingInfoCreateDto)
+	billing_info?: RecurlyBillingInfoCreateDto
 
 	@IsOptional()
 	@IsArray()
 	@ValidateNested({ each: true })
-	@Type(() => CustomFieldDto)
-	custom_fields?: CustomFieldDto[]
+	@Type(() => RecurlyCustomFieldDto)
+	custom_fields?: RecurlyCustomFieldDto[]
 
 	@IsOptional()
 	@IsString()
@@ -618,7 +618,7 @@ export class UpdateAccountDto {
 }
 
 // Child Accounts Query DTO
-export class ListChildAccountsQueryDto {
+export class RecurlyListChildAccountsQueryDto {
 	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
@@ -658,14 +658,14 @@ export class ListChildAccountsQueryDto {
 }
 
 // External Subscriptions Query DTO
-export class ListExternalSubscriptionsQueryDto {
+export class RecurlyListExternalSubscriptionsQueryDto {
 	@IsOptional()
 	@IsEnum(['created_at', 'updated_at'])
 	sort?: 'created_at' | 'updated_at'
 }
 
 // Response DTOs
-export class AccountsListResponseDto implements AccountListResponse {
+export class RecurlyAccountsListResponseDto implements RecurlyAccountListResponse {
 	@IsString()
 	object!: string
 
@@ -680,7 +680,7 @@ export class AccountsListResponseDto implements AccountListResponse {
 	data!: RecurlyAccount[]
 }
 
-export class AccountBalanceResponseDto implements AccountBalance {
+export class RecurlyAccountBalanceResponseDto implements RecurlyAccountBalance {
 	@IsOptional()
 	@IsString()
 	object?: string
@@ -697,7 +697,7 @@ export class AccountBalanceResponseDto implements AccountBalance {
 	balances?: any[]
 }
 
-export class ExternalSubscriptionsListResponseDto implements ExternalSubscriptionListResponse {
+export class RecurlyExternalSubscriptionsListResponseDto implements RecurlyExternalSubscriptionListResponse {
 	@IsString()
 	object!: string
 
@@ -711,3 +711,19 @@ export class ExternalSubscriptionsListResponseDto implements ExternalSubscriptio
 	@IsArray()
 	data!: any[]
 }
+
+// Backward compatibility aliases
+export type ListAccountsQueryDto = RecurlyListAccountsQueryDto
+export type AddressDto = RecurlyAddressDto
+export type CustomFieldDto = RecurlyCustomFieldDto
+export type AccountAcquisitionDto = RecurlyAccountAcquisitionDto
+export type ExternalAccountDto = RecurlyExternalAccountDto
+export type ShippingAddressDto = RecurlyShippingAddressDto
+export type BillingInfoCreateDto = RecurlyBillingInfoCreateDto
+export type CreateAccountDto = RecurlyCreateAccountDto
+export type UpdateAccountDto = RecurlyUpdateAccountDto
+export type ListChildAccountsQueryDto = RecurlyListChildAccountsQueryDto
+export type ListExternalSubscriptionsQueryDto = RecurlyListExternalSubscriptionsQueryDto
+export type AccountsListResponseDto = RecurlyAccountsListResponseDto
+export type AccountBalanceResponseDto = RecurlyAccountBalanceResponseDto
+export type ExternalSubscriptionsListResponseDto = RecurlyExternalSubscriptionsListResponseDto

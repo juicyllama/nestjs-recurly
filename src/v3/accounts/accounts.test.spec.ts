@@ -2,7 +2,7 @@ import { canTest } from '../v3.helpers'
 import { RecurlyV3Module } from '../v3.module'
 import { AccountsModule } from './accounts.module'
 import { AccountsService } from './accounts.service'
-import { RecurlyAccount, AccountBalance, AccountListResponse } from './accounts.types'
+import { RecurlyAccount, RecurlyAccountBalance, RecurlyAccountListResponse } from './accounts.types'
 import { faker } from '@faker-js/faker'
 import { ConfigModule } from '@nestjs/config'
 import { Test } from '@nestjs/testing'
@@ -118,7 +118,7 @@ describe('Accounts', () => {
 	// CRUD ORDER: READ
 	describe('Read Operations', () => {
 		it("List all site's accounts", async () => {
-			const result: AccountListResponse = await accountsService.listAccounts()
+			const result: RecurlyAccountListResponse = await accountsService.listAccounts()
 			expect(result).toBeDefined()
 			expect(result.object).toBe('list')
 			expect(result.data).toBeDefined()
@@ -138,7 +138,7 @@ describe('Accounts', () => {
 		})
 
 		it('List accounts with query parameters', async () => {
-			const result: AccountListResponse = await accountsService.listAccounts({
+			const result: RecurlyAccountListResponse = await accountsService.listAccounts({
 				limit: 5,
 				order: 'desc',
 				sort: 'created_at',
@@ -173,7 +173,7 @@ describe('Accounts', () => {
 		// })
 
 		it('Get account balance', async () => {
-			const balance: AccountBalance = await accountsService.getAccountBalance(mainAccount.id as string)
+			const balance: RecurlyAccountBalance = await accountsService.getAccountBalance(mainAccount.id as string)
 			expect(balance).toBeDefined()
 			expect(balance.object).toBeDefined()
 			expect(balance.account).toBeDefined()

@@ -3,13 +3,18 @@ import { InjectConfig } from '../../config/config.provider'
 import { RECURLY_API_BASE_URL } from '../v3.constants'
 import { buildQueryString, checkResponseIsOk, getHeaders } from '../v3.helpers'
 import {
-	ListAccountsQueryDto,
-	CreateAccountDto,
-	UpdateAccountDto,
-	ListChildAccountsQueryDto,
-	ListExternalSubscriptionsQueryDto,
+	RecurlyListAccountsQueryDto,
+	RecurlyCreateAccountDto,
+	RecurlyUpdateAccountDto,
+	RecurlyListChildAccountsQueryDto,
+	RecurlyListExternalSubscriptionsQueryDto,
 } from './accounts.dto'
-import { RecurlyAccount, AccountListResponse, AccountBalance, ExternalSubscriptionListResponse } from './accounts.types'
+import {
+	RecurlyAccount,
+	RecurlyAccountListResponse,
+	RecurlyAccountBalance,
+	RecurlyExternalSubscriptionListResponse,
+} from './accounts.types'
 import { Injectable, Logger } from '@nestjs/common'
 
 @Injectable()
@@ -18,7 +23,7 @@ export class AccountsService {
 
 	constructor(@InjectConfig(RecurlyConfigDto) private readonly config: RecurlyConfigDto) {}
 
-	async listAccounts(params?: ListAccountsQueryDto, apiKey?: string): Promise<AccountListResponse> {
+	async listAccounts(params?: RecurlyListAccountsQueryDto, apiKey?: string): Promise<RecurlyAccountListResponse> {
 		let url = `${RECURLY_API_BASE_URL}/accounts`
 
 		if (params && Object.keys(params).length > 0) {
@@ -31,10 +36,10 @@ export class AccountsService {
 		})
 
 		await checkResponseIsOk(response, this.logger, 'List Accounts')
-		return (await response.json()) as AccountListResponse
+		return (await response.json()) as RecurlyAccountListResponse
 	}
 
-	async createAccount(data: CreateAccountDto, apiKey?: string): Promise<RecurlyAccount> {
+	async createAccount(data: RecurlyCreateAccountDto, apiKey?: string): Promise<RecurlyAccount> {
 		const response = await fetch(`${RECURLY_API_BASE_URL}/accounts`, {
 			method: 'POST',
 			headers: getHeaders(this.config, apiKey),
@@ -57,7 +62,7 @@ export class AccountsService {
 		return (await response.json()) as RecurlyAccount
 	}
 
-	async updateAccount(accountId: string, data: UpdateAccountDto, apiKey?: string): Promise<RecurlyAccount> {
+	async updateAccount(accountId: string, data: RecurlyUpdateAccountDto, apiKey?: string): Promise<RecurlyAccount> {
 		const response = await fetch(`${RECURLY_API_BASE_URL}/accounts/${accountId}`, {
 			method: 'PUT',
 			headers: getHeaders(this.config, apiKey),
@@ -88,21 +93,21 @@ export class AccountsService {
 		return (await response.json()) as RecurlyAccount
 	}
 
-	async getAccountBalance(accountId: string, apiKey?: string): Promise<AccountBalance> {
+	async getAccountBalance(accountId: string, apiKey?: string): Promise<RecurlyAccountBalance> {
 		const response = await fetch(`${RECURLY_API_BASE_URL}/accounts/${accountId}/balance`, {
 			method: 'GET',
 			headers: getHeaders(this.config, apiKey),
 		})
 
 		await checkResponseIsOk(response, this.logger, 'Get Account Balance')
-		return (await response.json()) as AccountBalance
+		return (await response.json()) as RecurlyAccountBalance
 	}
 
 	async listChildAccounts(
 		accountId: string,
-		params?: ListChildAccountsQueryDto,
+		params?: RecurlyListChildAccountsQueryDto,
 		apiKey?: string,
-	): Promise<AccountListResponse> {
+	): Promise<RecurlyAccountListResponse> {
 		let url = `${RECURLY_API_BASE_URL}/accounts/${accountId}/accounts`
 
 		if (params && Object.keys(params).length > 0) {
@@ -115,14 +120,14 @@ export class AccountsService {
 		})
 
 		await checkResponseIsOk(response, this.logger, 'List Child Accounts')
-		return (await response.json()) as AccountListResponse
+		return (await response.json()) as RecurlyAccountListResponse
 	}
 
 	async listAccountExternalSubscriptions(
 		accountId: string,
-		params?: ListExternalSubscriptionsQueryDto,
+		params?: RecurlyListExternalSubscriptionsQueryDto,
 		apiKey?: string,
-	): Promise<ExternalSubscriptionListResponse> {
+	): Promise<RecurlyExternalSubscriptionListResponse> {
 		let url = `${RECURLY_API_BASE_URL}/accounts/${accountId}/external_subscriptions`
 
 		if (params && Object.keys(params).length > 0) {
@@ -135,6 +140,6 @@ export class AccountsService {
 		})
 
 		await checkResponseIsOk(response, this.logger, 'List Account External Subscriptions')
-		return (await response.json()) as ExternalSubscriptionListResponse
+		return (await response.json()) as RecurlyExternalSubscriptionListResponse
 	}
 }

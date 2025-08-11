@@ -1,7 +1,7 @@
 // Enums
-export type AccountState = 'active' | 'closed' | 'subscriber'
+export type RecurlyAccountState = 'active' | 'inactive' | 'closed' | 'subscriber'
 
-export type PreferredLocale =
+export type RecurlyPreferredLocale =
 	| 'da-DK'
 	| 'de-CH'
 	| 'de-DE'
@@ -35,26 +35,26 @@ export type PreferredLocale =
 	| 'tr-TR'
 	| 'zh-CN'
 
-export type BillTo = 'parent' | 'self'
+export type RecurlyBillTo = 'parent' | 'self'
 
-export type TransactionType = 'moto'
+export type RecurlyTransactionType = 'moto'
 
-export type TaxIdentifierType = 'cpf' | 'other'
+export type RecurlyTaxIdentifierType = 'cpf' | 'other'
 
-export type ExternalHppType = 'adyen'
+export type RecurlyExternalHppType = 'adyen'
 
-export type OnlineBankingPaymentType = 'ideal'
+export type RecurlyOnlineBankingPaymentType = 'ideal'
 
-export type CardType = 'American Express' | 'Visa' | 'MasterCard' | 'Discover' | 'other'
+export type RecurlyCardType = 'American Express' | 'Visa' | 'MasterCard' | 'Discover' | 'other'
 
-export type CardNetworkPreference = 'Bancontact' | 'other'
+export type RecurlyCardNetworkPreference = 'Bancontact' | 'other'
 
-export type BankAccountType = 'bacs' | 'checking' | 'savings'
+export type RecurlyBankAccountType = 'bacs' | 'checking' | 'savings'
 
-export type AcquisitionChannel = 'advertising' | 'social_media' | 'email' | 'blog' | 'other'
+export type RecurlyAcquisitionChannel = 'advertising' | 'social_media' | 'email' | 'blog' | 'other'
 
 // Address interface
-export interface Address {
+export interface RecurlyAddress {
 	phone?: string
 	street1?: string
 	street2?: string
@@ -66,31 +66,31 @@ export interface Address {
 }
 
 // Custom Field interface
-export interface CustomField {
+export interface RecurlyCustomField {
 	name: string
 	value: string | null
 }
 
 // Account Acquisition interface
-export interface AccountAcquisition {
+export interface RecurlyAccountAcquisition {
 	cost?: {
 		amount?: number
 		currency?: string
 	}
-	channel?: AcquisitionChannel
+	channel?: RecurlyAcquisitionChannel
 	subchannel?: string
 	campaign?: string
 	acquired_at?: string // ISO 8601 date-time
 }
 
 // External Account interface
-export interface ExternalAccount {
+export interface RecurlyExternalAccount {
 	external_account_code?: string
 	external_connection_type?: string
 }
 
 // Shipping Address interface
-export interface ShippingAddress {
+export interface RecurlyShippingAddress {
 	id?: string
 	object?: string
 	account_id?: string
@@ -113,9 +113,9 @@ export interface ShippingAddress {
 }
 
 // Payment Method interface
-export interface PaymentMethod {
+export interface RecurlyPaymentMethod {
 	object?: string
-	card_type?: CardType
+	card_type?: RecurlyCardType
 	first_six?: string
 	last_four?: string
 	exp_month?: number
@@ -124,14 +124,14 @@ export interface PaymentMethod {
 	gateway_code?: string
 	billing_agreement_id?: string
 	name_on_account?: string
-	account_type?: BankAccountType
+	account_type?: RecurlyBankAccountType
 	routing_number?: string
 	routing_number_bank?: string
 	cc_bin_country?: string
 }
 
 // Fraud info interface
-export interface FraudInfo {
+export interface RecurlyFraudInfo {
 	score?: number
 	decision?: string
 	reference?: string
@@ -139,7 +139,7 @@ export interface FraudInfo {
 }
 
 // Payment Gateway Reference interface
-export interface PaymentGatewayReference {
+export interface RecurlyPaymentGatewayReference {
 	id?: string
 	object?: string
 	reference?: string
@@ -147,26 +147,26 @@ export interface PaymentGatewayReference {
 }
 
 // Gateway Attributes interface
-export interface GatewayAttributes {
+export interface RecurlyGatewayAttributes {
 	[key: string]: any
 }
 
 // Billing Info interface
-export interface BillingInfo {
+export interface RecurlyBillingInfo {
 	id?: string
 	object?: string
 	account_id?: string
 	first_name?: string
 	last_name?: string
 	company?: string
-	address?: Address
+	address?: RecurlyAddress
 	vat_number?: string
 	valid?: boolean
-	payment_method?: PaymentMethod
-	fraud?: FraudInfo
+	payment_method?: RecurlyPaymentMethod
+	fraud?: RecurlyFraudInfo
 	primary_payment_method?: boolean
 	backup_payment_method?: boolean
-	payment_gateway_references?: PaymentGatewayReference[]
+	payment_gateway_references?: RecurlyPaymentGatewayReference[]
 	created_at?: string
 	updated_at?: string
 	updated_by?: {
@@ -179,9 +179,9 @@ export interface BillingInfo {
 export interface RecurlyAccount {
 	id?: string
 	object?: string
-	state?: AccountState
+	state?: RecurlyAccountState
 	hosted_login_token?: string
-	shipping_addresses?: ShippingAddress[]
+	shipping_addresses?: RecurlyShippingAddress[]
 	has_live_subscription?: boolean
 	has_active_subscription?: boolean
 	has_future_subscription?: boolean
@@ -195,7 +195,7 @@ export interface RecurlyAccount {
 	username?: string
 	email?: string
 	override_business_entity_id?: string
-	preferred_locale?: PreferredLocale
+	preferred_locale?: RecurlyPreferredLocale
 	preferred_time_zone?: string
 	cc_emails?: string
 	first_name?: string
@@ -204,24 +204,24 @@ export interface RecurlyAccount {
 	vat_number?: string
 	tax_exempt?: boolean
 	exemption_certificate?: string
-	external_accounts?: ExternalAccount[]
+	external_accounts?: RecurlyExternalAccount[]
 	parent_account_id?: string
-	bill_to?: BillTo
+	bill_to?: RecurlyBillTo
 	dunning_campaign_id?: string
 	invoice_template_id?: string
-	address?: Address
-	billing_info?: BillingInfo
-	custom_fields?: CustomField[]
+	address?: RecurlyAddress
+	billing_info?: RecurlyBillingInfo
+	custom_fields?: RecurlyCustomField[]
 	entity_use_code?: string
 }
 
 // Account Balance interfaces
-export interface AccountBalanceAmount {
+export interface RecurlyAccountBalanceAmount {
 	currency?: string
 	amount?: number
 }
 
-export interface AccountBalanceInfo {
+export interface RecurlyAccountBalanceInfo {
 	id?: string
 	object?: string
 	code?: string
@@ -234,30 +234,30 @@ export interface AccountBalanceInfo {
 	dunning_campaign_id?: string
 }
 
-export interface AccountBalance {
+export interface RecurlyAccountBalance {
 	object?: string
-	account?: AccountBalanceInfo
+	account?: RecurlyAccountBalanceInfo
 	past_due?: boolean
-	balances?: AccountBalanceAmount[]
+	balances?: RecurlyAccountBalanceAmount[]
 }
 
 // List response interfaces
-export interface AccountListResponse {
+export interface RecurlyAccountListResponse {
 	object: string
 	has_more: boolean
 	next?: string
 	data: RecurlyAccount[]
 }
 
-export interface AccountBalanceListResponse {
+export interface RecurlyAccountBalanceListResponse {
 	object: string
 	has_more: boolean
 	next?: string
-	data: AccountBalance[]
+	data: RecurlyAccountBalance[]
 }
 
 // External Subscription interface
-export interface ExternalSubscription {
+export interface RecurlyExternalSubscription {
 	id?: string
 	object?: string
 	account?: {
@@ -289,9 +289,9 @@ export interface ExternalSubscription {
 	state?: string
 }
 
-export interface ExternalSubscriptionListResponse {
+export interface RecurlyExternalSubscriptionListResponse {
 	object: string
 	has_more: boolean
 	next?: string
-	data: ExternalSubscription[]
+	data: RecurlyExternalSubscription[]
 }
