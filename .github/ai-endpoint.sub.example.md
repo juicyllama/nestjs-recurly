@@ -20,4 +20,4 @@ You should use `src/v3/accounts/*` as a template
 12. Run the test suite to ensure tests still pass (`npm run test`)
 13. Commit the code with a good commit message
 14. Create a PR for this new module from your feature branch to main using the Github CLI.
-15. Switch back to the main branch to close the loop.=
+15. Switch back to the main branch to close the loop.

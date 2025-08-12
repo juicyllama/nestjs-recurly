@@ -1,4 +1,4 @@
-import { canTest } from '../../v3.helpers'
+import { canTest, suppressErrorTesting } from '../../v3.helpers'
 import { RecurlyV3Module } from '../../v3.module'
 import { AccountsModule } from '../accounts.module'
 import { AccountsService } from '../accounts.service'
@@ -106,21 +106,11 @@ describe('Account Acquisition', () => {
 			// Remove the acquisition data
 			await expect(service.removeAccountAcquisition(testAccountId)).resolves.not.toThrow()
 
-			// Temporarily suppress logger error for expected 404
-			const logger = jest.spyOn(service['logger'], 'error').mockImplementation()
-
-			// Verify acquisition data is removed by trying to get it
-			try {
-				await service.getAccountAcquisition(testAccountId)
-				// If we get here, the test should fail because we expected an error
-				fail('Expected getAccountAcquisition to throw an error after removal')
-			} catch (error) {
-				// This is expected - acquisition data should be gone
-				expect(error).toBeDefined()
-			} finally {
-				// Restore original logger
-				logger.mockRestore()
-			}
+			await suppressErrorTesting(
+				service,
+				(accountId: string) => service.getAccountAcquisition(accountId),
+				testAccountId,
+			)
 		})
 	})
 
