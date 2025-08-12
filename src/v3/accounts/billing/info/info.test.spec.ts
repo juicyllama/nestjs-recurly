@@ -133,7 +133,6 @@ describe('Billing Info', () => {
 	})
 
 	afterAll(async () => {
-		// Clean up: Remove billing info if it exists
 		if (canTest()) {
 			try {
 				await accountsService.deactivateAccount(testAccountId)

@@ -6,6 +6,7 @@ export { AccountsService } from './v3/accounts/accounts.service'
 export { AccountNotesService } from './v3/accounts/notes/notes.service'
 export { AccountAcquisitionService } from './v3/accounts/acquisition/acquisition.service'
 export { BillingInfoService } from './v3/accounts/billing/info/info.service'
+export { BillingInfosService } from './v3/accounts/billing/infos/infos.service'
 
 //Config
 export { RecurlyConfigDto } from './config/config.dto'
@@ -56,6 +57,13 @@ export {
 	RecurlyAvsCheck,
 } from './v3/accounts/billing/info/info.types'
 
+export {
+	RecurlyBillingInfoListResponse,
+	RecurlyPaymentMethodObject,
+	RecurlyFundingSource,
+	RecurlyBillingInfoUpdatedBy,
+} from './v3/accounts/billing/infos/infos.types'
+
 //DTOs
 export {
 	RecurlyListAccountsQueryDto,
@@ -82,3 +90,13 @@ export {
 	RecurlyPaymentGatewayReferenceDto,
 	RecurlyGatewayAttributesDto,
 } from './v3/accounts/billing/info/info.dto'
+
+export {
+	RecurlyListBillingInfosQueryDto,
+	RecurlyCreateBillingInfoDto,
+	RecurlyUpdateBillingInfoDto as RecurlyUpdateBillingInfosDto,
+	RecurlyVerifyBillingInfoDto as RecurlyVerifyBillingInfosDto,
+	RecurlyVerifyBillingInfoCVVDto,
+	RecurlyPaymentGatewayReferenceDto as RecurlyPaymentGatewayReferencesDto,
+	RecurlyGatewayAttributesDto as RecurlyGatewayAttributesInfosDto,
+} from './v3/accounts/billing/infos/infos.dto'
