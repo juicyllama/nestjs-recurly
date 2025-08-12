@@ -1,3 +1,5 @@
+import { RecurlyBillingInfo } from './billing/info/info.types'
+
 // Enums
 export type RecurlyAccountState = 'active' | 'inactive' | 'closed' | 'subscriber'
 
@@ -149,30 +151,6 @@ export interface RecurlyPaymentGatewayReference {
 // Gateway Attributes interface
 export interface RecurlyGatewayAttributes {
 	[key: string]: any
-}
-
-// Billing Info interface
-export interface RecurlyBillingInfo {
-	id?: string
-	object?: string
-	account_id?: string
-	first_name?: string
-	last_name?: string
-	company?: string
-	address?: RecurlyAddress
-	vat_number?: string
-	valid?: boolean
-	payment_method?: RecurlyPaymentMethod
-	fraud?: RecurlyFraudInfo
-	primary_payment_method?: boolean
-	backup_payment_method?: boolean
-	payment_gateway_references?: RecurlyPaymentGatewayReference[]
-	created_at?: string
-	updated_at?: string
-	updated_by?: {
-		ip?: string
-		country?: string
-	}
 }
 
 // Main Account interface

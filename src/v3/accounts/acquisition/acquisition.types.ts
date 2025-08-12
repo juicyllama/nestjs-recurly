@@ -5,7 +5,7 @@ export interface RecurlyAccountAcquisition {
 	account?: RecurlyAccountMini
 	/** Monetary cost; may be omitted or null if not set */
 	cost?: RecurlyAccountAcquisitionCost | null
-	/** Acquisition channel; may be omitted or null if not set.  
+	/** Acquisition channel; may be omitted or null if not set.
 	 *  Refer to the v2021-02-25 API reference for allowed enum values (e.g., "organic", "referral", "paid", etc.). */
 	channel?: RecurlyAccountAcquisitionChannel | null
 	subchannel?: string
