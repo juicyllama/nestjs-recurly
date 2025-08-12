@@ -18,6 +18,6 @@ You should use `src/v3/accounts/*` as a template
 10. Run prettier (`npm run format`)
 11. Run build and make sure the application builds (`npm run build`)
 12. Run the test suite to ensure tests still pass (`npm run test`)
-13. Commit the code with a good commit message
+13. Commit the code with a good commit message, push the branch to github.
 14. Create a PR for this new module from your feature branch to main using the Github CLI.
 15. Switch back to the main branch to close the loop.
