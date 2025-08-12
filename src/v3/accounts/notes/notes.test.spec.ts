@@ -36,7 +36,7 @@ describe('Account Notes', () => {
 
 		// Create a test account to work with
 		testAccount = await accountsService.createAccount({
-			code: faker.string.alpha(10),
+			code: faker.string.alpha(49),
 			email: faker.internet.email(),
 			first_name: 'Notes',
 			last_name: 'Test Account',
