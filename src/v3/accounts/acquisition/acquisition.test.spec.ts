@@ -8,7 +8,6 @@ import { RecurlyAccountAcquisitionChannel } from './acquisition.types'
 import { faker } from '@faker-js/faker'
 import { ConfigModule } from '@nestjs/config'
 import { Test, TestingModule } from '@nestjs/testing'
-import { Logger } from '@nestjs/common'
 
 describe('Account Acquisition', () => {
 	let service: AccountAcquisitionService
@@ -103,14 +102,12 @@ describe('Account Acquisition', () => {
 	describe('removeAccountAcquisition', () => {
 		it('should remove account acquisition data', async () => {
 			if (!canTest()) return
-			
+
 			// Remove the acquisition data
 			await expect(service.removeAccountAcquisition(testAccountId)).resolves.not.toThrow()
 
 			// Temporarily suppress logger error for expected 404
-			const logger = (service as any).logger
-			const originalError = logger.error
-			logger.error = jest.fn()
+			const logger = jest.spyOn(service['logger'], 'error').mockImplementation()
 
 			// Verify acquisition data is removed by trying to get it
 			try {
@@ -122,7 +119,7 @@ describe('Account Acquisition', () => {
 				expect(error).toBeDefined()
 			} finally {
 				// Restore original logger
-				logger.error = originalError
+				logger.mockRestore()
 			}
 		})
 	})
