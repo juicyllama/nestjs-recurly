@@ -3,6 +3,7 @@ import { ConfigValidationModule } from '../../config/config.module'
 import { AccountsService } from './accounts.service'
 import { AccountAcquisitionModule } from './acquisition/acquisition.module'
 import { BillingInfoModule } from './billing/info/info.module'
+import { BillingInfosModule } from './billing/infos/infos.module'
 import { AccountNotesModule } from './notes/notes.module'
 import { Module } from '@nestjs/common'
 
@@ -12,6 +13,7 @@ import { Module } from '@nestjs/common'
 		AccountNotesModule,
 		AccountAcquisitionModule,
 		BillingInfoModule,
+		BillingInfosModule,
 	],
 	controllers: [],
 	providers: [AccountsService],

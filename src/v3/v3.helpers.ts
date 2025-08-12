@@ -45,21 +45,21 @@ export function canTest() {
 	return !(process.env.NODE_ENV === 'production')
 }
 
-export async function suppressErrorTesting<P>(service: any, fn: (params: P) => Promise<any>, params: P): Promise<void> {
+export async function suppressErrorTesting(
+	service: any,
+	fn: (...args: any[]) => Promise<any>,
+	...args: any[]
+): Promise<void> {
 	// Temporarily suppress logger error for expected 404
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 	const loggerSpy = service['logger'] ? jest.spyOn(service['logger'], 'error').mockImplementation() : null
 
-	// Verify acquisition data is removed by trying to get it
 	try {
-		await fn(params)
-		// If we get here, the test should fail because we expected an error
+		await fn(...args)
 		fail('Expected function to throw an error')
 	} catch (error) {
-		// This is expected - data should be gone
 		expect(error).toBeDefined()
 	} finally {
-		// Restore original logger
 		if (loggerSpy) {
 			loggerSpy.mockRestore()
 		}
