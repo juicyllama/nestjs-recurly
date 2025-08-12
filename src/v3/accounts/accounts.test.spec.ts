@@ -21,8 +21,8 @@ describe('Accounts', () => {
 	let mainAccount: RecurlyAccount
 	//let childAccount: RecurlyAccount
 	const testEmail = faker.internet.email()
-	const testCode = faker.string.alpha(10)
-	//const childCode = faker.string.alpha(10)
+	const testCode = faker.string.alpha(49)
+	//const childCode = faker.string.alpha(49)
 
 	beforeAll(async () => {
 		if (!canTest()) {
