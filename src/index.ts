@@ -7,6 +7,7 @@ export { AccountNotesService } from './v3/accounts/notes/notes.service'
 export { AccountAcquisitionService } from './v3/accounts/acquisition/acquisition.service'
 export { BillingInfoService } from './v3/accounts/billing/info/info.service'
 export { BillingInfosService } from './v3/accounts/billing/infos/infos.service'
+export { RecurlySubscriptionService } from './v3/accounts/subscription/subscription.service'
 
 //Config
 export { RecurlyConfigDto } from './config/config.dto'
@@ -64,6 +65,29 @@ export {
 	RecurlyBillingInfoUpdatedBy,
 } from './v3/accounts/billing/infos/infos.types'
 
+export {
+	RecurlySubscription,
+	RecurlySubscriptionList,
+	RecurlySubscriptionState,
+	RecurlyRevenueScheduleType,
+	RecurlyCollectionMethod as RecurlySubscriptionCollectionMethod,
+	RecurlyNetTermsType,
+	RecurlyAddOnSource,
+	RecurlyRefundType,
+	RecurlyAccountMini as RecurlySubscriptionAccountMini,
+	RecurlyPlanMini,
+	RecurlyAddOnMini,
+	RecurlyCouponRedemptionMini,
+	RecurlySubscriptionShipping,
+	RecurlySubscriptionChange,
+	RecurlySubscriptionRampInterval,
+	RecurlySubscriptionRampIntervalResponse,
+	RecurlyTaxInfo,
+	RecurlyCustomField,
+	RecurlySubscriptionAddOn,
+	RecurlyErrorMayHaveTransaction,
+} from './v3/accounts/subscription/subscription.types'
+
 //DTOs
 export {
 	RecurlyListAccountsQueryDto,
@@ -100,3 +124,21 @@ export {
 	RecurlyPaymentGatewayReferenceDto as RecurlyPaymentGatewayReferencesDto,
 	RecurlyGatewayAttributesDto as RecurlyGatewayAttributesInfosDto,
 } from './v3/accounts/billing/infos/infos.dto'
+
+export {
+	RecurlyListSubscriptionsQueryDto,
+	RecurlyListAccountSubscriptionsQueryDto,
+	RecurlyCreateSubscriptionDto,
+	RecurlyUpdateSubscriptionDto,
+	RecurlyTerminateSubscriptionQueryDto,
+	RecurlyCancelSubscriptionDto,
+	RecurlyPauseSubscriptionDto,
+	RecurlyConvertTrialDto,
+	RecurlyAccountCreateDto,
+	RecurlySubscriptionShippingAddressDto,
+	RecurlySubscriptionShippingCreateDto,
+	RecurlySubscriptionShippingUpdateDto,
+	RecurlyCustomFieldDto,
+	RecurlySubscriptionAddOnCreateDto,
+	RecurlySubscriptionRampIntervalDto,
+} from './v3/accounts/subscription/subscription.dtos'

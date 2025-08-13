@@ -5,6 +5,7 @@ import { AccountAcquisitionModule } from './acquisition/acquisition.module'
 import { BillingInfoModule } from './billing/info/info.module'
 import { BillingInfosModule } from './billing/infos/infos.module'
 import { AccountNotesModule } from './notes/notes.module'
+import { RecurlySubscriptionModule } from './subscription/subscription.module'
 import { Module } from '@nestjs/common'
 
 @Module({
@@ -14,6 +15,7 @@ import { Module } from '@nestjs/common'
 		AccountAcquisitionModule,
 		BillingInfoModule,
 		BillingInfosModule,
+		RecurlySubscriptionModule,
 	],
 	controllers: [],
 	providers: [AccountsService],
