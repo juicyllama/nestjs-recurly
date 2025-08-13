@@ -7,6 +7,7 @@ export { AccountNotesService } from './v3/accounts/notes/notes.service'
 export { AccountAcquisitionService } from './v3/accounts/acquisition/acquisition.service'
 export { BillingInfoService } from './v3/accounts/billing/info/info.service'
 export { BillingInfosService } from './v3/accounts/billing/infos/infos.service'
+export { ItemService } from './v3/item/item.service'
 
 //Config
 export { RecurlyConfigDto } from './config/config.dto'
@@ -64,6 +65,16 @@ export {
 	RecurlyBillingInfoUpdatedBy,
 } from './v3/accounts/billing/infos/infos.types'
 
+export {
+	RecurlyItem,
+	RecurlyItemMini,
+	RecurlyItemListResponse,
+	RecurlyItemState,
+	RecurlyRevenueScheduleType,
+	RecurlyCustomField,
+	RecurlyPricing,
+} from './v3/item/item.types'
+
 //DTOs
 export {
 	RecurlyListAccountsQueryDto,
@@ -100,3 +111,11 @@ export {
 	RecurlyPaymentGatewayReferenceDto as RecurlyPaymentGatewayReferencesDto,
 	RecurlyGatewayAttributesDto as RecurlyGatewayAttributesInfosDto,
 } from './v3/accounts/billing/infos/infos.dto'
+
+export {
+	RecurlyListItemsQueryDto,
+	RecurlyCreateItemDto,
+	RecurlyUpdateItemDto,
+	RecurlyCustomFieldDto,
+	RecurlyPricingDto,
+} from './v3/item/item.dto'
