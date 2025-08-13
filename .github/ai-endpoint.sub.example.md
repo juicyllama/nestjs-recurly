@@ -1,6 +1,7 @@
 I am looking to extend this Recurly NestJS API wrapper to include Account > Billing Infos
 
 API documentation: https://recurly.com/developers/api/v2021-02-25/index.html#tag/billing_infos
+Local swagger downloaded version: `./recurly-api-spec.yaml`
 
 Before starting the work you should create a branch `billing_infos` and ensure all development happens on that feature branch.
 
