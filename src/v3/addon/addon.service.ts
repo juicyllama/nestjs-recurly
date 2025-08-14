@@ -2,7 +2,7 @@ import { RecurlyConfigDto } from '../../config/config.dto'
 import { InjectConfig } from '../../config/config.provider'
 import { RECURLY_API_BASE_URL } from '../v3.constants'
 import { buildQueryString, checkResponseIsOk, getHeaders } from '../v3.helpers'
-import { CreatePlanAddOnDto, ListPlanAddOnsDto, UpdatePlanAddOnDto } from './addon.dto'
+import { RecurlyCreatePlanAddOnDto, RecurlyListPlanAddOnsDto, RecurlyUpdatePlanAddOnDto } from './addon.dto'
 import { RecurlyAddOn, RecurlyAddOnCreate, RecurlyAddOnList, RecurlyAddOnUpdate } from './addon.types'
 import { Injectable, Logger } from '@nestjs/common'
 
@@ -12,7 +12,11 @@ export class AddOnService {
 
 	constructor(@InjectConfig(RecurlyConfigDto) private readonly config: RecurlyConfigDto) {}
 
-	async listPlanAddOns(planId: string, query: ListPlanAddOnsDto = {}, apiKey?: string): Promise<RecurlyAddOnList> {
+	async listPlanAddOns(
+		planId: string,
+		query: RecurlyListPlanAddOnsDto = {},
+		apiKey?: string,
+	): Promise<RecurlyAddOnList> {
 		this.logger.log(`Listing add-ons for plan ${planId}`)
 		let url = `${RECURLY_API_BASE_URL}/plans/${planId}/add_ons`
 
@@ -29,7 +33,7 @@ export class AddOnService {
 		return (await response.json()) as RecurlyAddOnList
 	}
 
-	async createPlanAddOn(planId: string, data: CreatePlanAddOnDto, apiKey?: string): Promise<RecurlyAddOn> {
+	async createPlanAddOn(planId: string, data: RecurlyCreatePlanAddOnDto, apiKey?: string): Promise<RecurlyAddOn> {
 		this.logger.log(`Creating add-on for plan ${planId}`)
 		const body: RecurlyAddOnCreate = data
 
@@ -58,7 +62,7 @@ export class AddOnService {
 	async updatePlanAddOn(
 		planId: string,
 		addOnId: string,
-		data: UpdatePlanAddOnDto,
+		data: RecurlyUpdatePlanAddOnDto,
 		apiKey?: string,
 	): Promise<RecurlyAddOn> {
 		this.logger.log(`Updating add-on ${addOnId} for plan ${planId}`)

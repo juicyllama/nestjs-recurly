@@ -56,7 +56,6 @@ describe('MeasuredUnit', () => {
 
 	// READ - List measured units
 	it('should list measured units', async () => {
-
 		const response = await service.listMeasuredUnits({
 			limit: 10,
 			order: 'desc',
@@ -76,7 +75,6 @@ describe('MeasuredUnit', () => {
 
 	// UPDATE - Update a measured unit
 	it('should update a measured unit', async () => {
-
 		const updateData: RecurlyUpdateMeasuredUnitDto = {
 			display_name: 'Updated Test Unit',
 			description: 'Updated description for automated tests',
@@ -108,12 +106,15 @@ describe('MeasuredUnit', () => {
 		expect(fetchedUnit.state).toBe('inactive')
 	})
 
-
-    afterAll(async () => {
+	afterAll(async () => {
 		try {
 			// Clean up test measured unit if it exists
 			if (createdMeasuredUnit?.id) {
-				await suppressErrorTesting(service, (id: string) => service.removeMeasuredUnit(id), createdMeasuredUnit.id)
+				await suppressErrorTesting(
+					service,
+					(id: string) => service.removeMeasuredUnit(id),
+					createdMeasuredUnit.id,
+				)
 			}
 		} catch {
 			// Ignore cleanup errors

@@ -139,11 +139,7 @@ export {
 export {
 	RecurlyListBillingInfosQueryDto,
 	RecurlyCreateBillingInfoDto,
-	RecurlyUpdateBillingInfoDto as RecurlyUpdateBillingInfosDto,
-	RecurlyVerifyBillingInfoDto as RecurlyVerifyBillingInfosDto,
 	RecurlyVerifyBillingInfoCVVDto,
-	RecurlyPaymentGatewayReferenceDto as RecurlyPaymentGatewayReferencesDto,
-	RecurlyGatewayAttributesDto as RecurlyGatewayAttributesInfosDto,
 } from './v3/accounts/billing/infos/infos.dto'
 
 export {
@@ -165,7 +161,12 @@ export {
 	RecurlyPlanHostedPagesDto,
 } from './v3/plan/plan.dto'
 
-export { ListPlanAddOnsDto, CreatePlanAddOnDto, UpdatePlanAddOnDto, AddOnPricingDto } from './v3/addon/addon.dto'
+export {
+	RecurlyListPlanAddOnsDto,
+	RecurlyCreatePlanAddOnDto,
+	RecurlyUpdatePlanAddOnDto,
+	RecurlyAddOnPricingDto,
+} from './v3/addon/addon.dto'
 
 export {
 	RecurlyListMeasuredUnitsQueryDto,

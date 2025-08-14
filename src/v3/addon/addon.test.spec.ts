@@ -2,7 +2,7 @@ import { PlanService } from '../plan/plan.service'
 import { RecurlyPlan } from '../plan/plan.types'
 import { canTest, suppressErrorTesting } from '../v3.helpers'
 import { RecurlyV3Module } from '../v3.module'
-import { CreatePlanAddOnDto, UpdatePlanAddOnDto } from './addon.dto'
+import { RecurlyCreatePlanAddOnDto, RecurlyUpdatePlanAddOnDto } from './addon.dto'
 import { AddOnService } from './addon.service'
 import { RecurlyAddOn } from './addon.types'
 import { ConfigModule } from '@nestjs/config'
@@ -43,7 +43,7 @@ describe('AddOn', () => {
 
 	// CREATE - Create a plan add-on
 	it('should create a plan add-on', async () => {
-		const createData: CreatePlanAddOnDto = {
+		const createData: RecurlyCreatePlanAddOnDto = {
 			code: `test-addon-${Date.now()}`,
 			name: 'Test Add-on',
 			currencies: [{ currency: 'USD', unit_amount: 5 }],
@@ -90,7 +90,7 @@ describe('AddOn', () => {
 
 	// UPDATE - Update a plan add-on
 	it('should update a plan add-on', async () => {
-		const updateData: UpdatePlanAddOnDto = {
+		const updateData: RecurlyUpdatePlanAddOnDto = {
 			name: 'Updated Test Add-on',
 		}
 

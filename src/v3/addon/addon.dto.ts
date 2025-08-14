@@ -14,7 +14,7 @@ import {
 	ValidateNested,
 } from 'class-validator'
 
-export class AddOnPricingDto {
+export class RecurlyAddOnPricingDto {
 	@IsNotEmpty()
 	@IsString()
 	@MaxLength(3)
@@ -35,7 +35,7 @@ export class AddOnPricingDto {
 	tax_inclusive?: boolean
 }
 
-export class ListPlanAddOnsDto {
+export class RecurlyListPlanAddOnsDto {
 	@IsOptional()
 	@IsString()
 	ids?: string
@@ -67,7 +67,7 @@ export class ListPlanAddOnsDto {
 	state?: string
 }
 
-export class CreatePlanAddOnDto {
+export class RecurlyCreatePlanAddOnDto {
 	@IsOptional()
 	@IsString()
 	@MaxLength(50)
@@ -169,8 +169,8 @@ export class CreatePlanAddOnDto {
 	@IsOptional()
 	@IsArray()
 	@ValidateNested({ each: true })
-	@Type(() => AddOnPricingDto)
-	currencies?: AddOnPricingDto[]
+	@Type(() => RecurlyAddOnPricingDto)
+	currencies?: RecurlyAddOnPricingDto[]
 
 	@IsOptional()
 	@IsEnum(['flat', 'tiered', 'stairstep', 'volume'])
@@ -189,7 +189,7 @@ export class CreatePlanAddOnDto {
 	percentage_tiers?: any[]
 }
 
-export class UpdatePlanAddOnDto {
+export class RecurlyUpdatePlanAddOnDto {
 	@IsOptional()
 	@IsString()
 	@MaxLength(50)
@@ -273,8 +273,8 @@ export class UpdatePlanAddOnDto {
 	@IsOptional()
 	@IsArray()
 	@ValidateNested({ each: true })
-	@Type(() => AddOnPricingDto)
-	currencies?: AddOnPricingDto[]
+	@Type(() => RecurlyAddOnPricingDto)
+	currencies?: RecurlyAddOnPricingDto[]
 
 	@IsOptional()
 	@IsArray()
