@@ -11,6 +11,7 @@ export { ItemService } from './v3/item/item.service'
 export { PlanService } from './v3/plan/plan.service'
 export { AddOnService } from './v3/addon/addon.service'
 export { MeasuredUnitService } from './v3/measuredUnit/measuredUnit.service'
+export { CouponService } from './v3/coupon/coupon.service'
 
 //Config
 export { RecurlyConfigDto } from './config/config.dto'
@@ -109,6 +110,16 @@ export {
 	RecurlyMeasuredUnitUpdate,
 } from './v3/measuredUnit/measuredUnit.types'
 
+export {
+	RecurlyCoupon,
+	RecurlyCouponList,
+	RecurlyCouponMini,
+	RecurlyCouponDiscount,
+	RecurlyCouponDiscountPricing,
+	RecurlyCouponDiscountTrial,
+	RecurlyCouponPricing,
+} from './v3/coupon/coupon.types'
+
 //DTOs
 export {
 	RecurlyListAccountsQueryDto,
@@ -173,3 +184,9 @@ export {
 	RecurlyCreateMeasuredUnitDto,
 	RecurlyUpdateMeasuredUnitDto,
 } from './v3/measuredUnit/measuredUnit.dto'
+
+export {
+	CouponListParamsDto,
+	CouponCreateDto,
+	CouponUpdateDto,
+} from './v3/coupon/coupon.dto'
