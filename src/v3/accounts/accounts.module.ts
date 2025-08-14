@@ -4,6 +4,7 @@ import { AccountsService } from './accounts.service'
 import { AccountAcquisitionModule } from './acquisition/acquisition.module'
 import { BillingInfoModule } from './billing/info/info.module'
 import { BillingInfosModule } from './billing/infos/infos.module'
+import { CouponRedemptionModule } from './couponRedemption/couponRedemption.module'
 import { AccountNotesModule } from './notes/notes.module'
 import { Module } from '@nestjs/common'
 
@@ -14,6 +15,7 @@ import { Module } from '@nestjs/common'
 		AccountAcquisitionModule,
 		BillingInfoModule,
 		BillingInfosModule,
+		CouponRedemptionModule,
 	],
 	controllers: [],
 	providers: [AccountsService],
