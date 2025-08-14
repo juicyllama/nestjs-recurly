@@ -8,6 +8,7 @@ export { AccountAcquisitionService } from './v3/accounts/acquisition/acquisition
 export { BillingInfoService } from './v3/accounts/billing/info/info.service'
 export { BillingInfosService } from './v3/accounts/billing/infos/infos.service'
 export { ItemService } from './v3/item/item.service'
+export { PlanService } from './v3/plan/plan.service'
 
 //Config
 export { RecurlyConfigDto } from './config/config.dto'
@@ -75,6 +76,22 @@ export {
 	RecurlyPricing,
 } from './v3/item/item.types'
 
+export {
+	RecurlyPlan,
+	RecurlyPlanMini,
+	RecurlyPlanListResponse,
+	RecurlyPlanState,
+	RecurlyPricingModel,
+	RecurlyIntervalUnit,
+	RecurlyTrialUnit,
+	RecurlyVertexTransactionType,
+	RecurlyPlanPricing,
+	RecurlyPlanSetupPricing,
+	RecurlyPlanRampPricing,
+	RecurlyPlanRampInterval,
+	RecurlyPlanHostedPages,
+} from './v3/plan/plan.types'
+
 //DTOs
 export {
 	RecurlyListAccountsQueryDto,
@@ -119,3 +136,14 @@ export {
 	RecurlyCustomFieldDto,
 	RecurlyPricingDto,
 } from './v3/item/item.dto'
+
+export {
+	RecurlyListPlansQueryDto,
+	RecurlyCreatePlanDto,
+	RecurlyUpdatePlanDto,
+	RecurlyPlanPricingDto,
+	RecurlyPlanSetupPricingDto,
+	RecurlyPlanRampPricingDto,
+	RecurlyPlanRampIntervalDto,
+	RecurlyPlanHostedPagesDto,
+} from './v3/plan/plan.dto'
