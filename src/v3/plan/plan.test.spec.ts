@@ -148,7 +148,7 @@ describe('PlanService', () => {
 	afterAll(async () => {
 		if (createdPlan && createdPlan.id) {
 			try {
-                await suppressErrorTesting(service, (id: string) => service.removePlan(id), createdPlan.id)
+				await suppressErrorTesting(service, (id: string) => service.removePlan(id), createdPlan.id)
 			} catch {
 				// Item might already be deactivated, ignore error
 			}

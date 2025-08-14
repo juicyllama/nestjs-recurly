@@ -156,7 +156,7 @@ describe('ItemService', () => {
 	afterAll(async () => {
 		if (createdItem && createdItem.id) {
 			try {
-                await suppressErrorTesting(service, (id: string) => service.deactivateItem(id), createdItem.id)
+				await suppressErrorTesting(service, (id: string) => service.deactivateItem(id), createdItem.id)
 			} catch {
 				// Item might already be deactivated, ignore error
 			}
