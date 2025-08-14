@@ -9,6 +9,7 @@ export { BillingInfoService } from './v3/accounts/billing/info/info.service'
 export { BillingInfosService } from './v3/accounts/billing/infos/infos.service'
 export { ItemService } from './v3/item/item.service'
 export { PlanService } from './v3/plan/plan.service'
+export { AddOnService } from './v3/addon/addon.service'
 
 //Config
 export { RecurlyConfigDto } from './config/config.dto'
@@ -92,6 +93,14 @@ export {
 	RecurlyPlanHostedPages,
 } from './v3/plan/plan.types'
 
+export {
+	RecurlyAddOn,
+	RecurlyAddOnList,
+	RecurlyAddOnCreate,
+	RecurlyAddOnUpdate,
+	RecurlyAddOnPricing,
+} from './v3/addon/addon.types'
+
 //DTOs
 export {
 	RecurlyListAccountsQueryDto,
@@ -147,3 +156,5 @@ export {
 	RecurlyPlanRampIntervalDto,
 	RecurlyPlanHostedPagesDto,
 } from './v3/plan/plan.dto'
+
+export { ListPlanAddOnsDto, CreatePlanAddOnDto, UpdatePlanAddOnDto, AddOnPricingDto } from './v3/addon/addon.dto'
