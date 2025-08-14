@@ -1,5 +1,14 @@
 //Module
 export { RecurlyV3Module } from './v3/v3.module'
+export { AccountsModule } from './v3/accounts/accounts.module'
+export { AccountNotesModule } from './v3/accounts/notes/notes.module'
+export { AccountAcquisitionModule } from './v3/accounts/acquisition/acquisition.module'
+export { BillingInfoModule } from './v3/accounts/billing/info/info.module'
+export { BillingInfosModule } from './v3/accounts/billing/infos/infos.module'
+export { PlanModule } from './v3/plan/plan.module'
+export { ItemModule } from './v3/item/item.module'
+export { AddOnModule } from './v3/addon/addon.module'
+export { MeasuredUnitModule } from './v3/measuredUnit/measuredUnit.module'
 
 //Service
 export { AccountsService } from './v3/accounts/accounts.service'
