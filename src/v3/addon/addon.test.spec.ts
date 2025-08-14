@@ -128,7 +128,11 @@ describe('AddOn', () => {
 		try {
 			// Clean up test plan
 			if (createdPlan?.id) {
-                await suppressErrorTesting(service, (id: string) => planService.removePlan(id), createdPlan.id)
+				await suppressErrorTesting(
+					planService,
+					(id: string) => planService.removePlan(id),
+					createdPlan.id,
+				)
 			}
 		} catch {
 			// Ignore cleanup errors
