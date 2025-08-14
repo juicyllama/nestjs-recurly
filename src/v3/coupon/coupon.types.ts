@@ -1,3 +1,6 @@
+import { RecurlyItemMini } from "../item/item.types";
+import { RecurlyPlanMini } from "../plan/plan.types";
+
 export interface RecurlyCouponDiscountTrial {
 	unit: 'day' | 'month' | 'week';
 	length: number;
@@ -45,8 +48,8 @@ export interface RecurlyCoupon {
 	applies_to_all_plans?: boolean;
 	applies_to_all_items?: boolean;
 	applies_to_non_plan_charges?: boolean;
-	plans?: any[];
-	items?: any[];
+	plans?: RecurlyPlanMini[];
+	items?: RecurlyItemMini[];
 	redemption_resource: 'account' | 'subscription';
 	discount: RecurlyCouponDiscount;
 	coupon_type: 'bulk' | 'single_code';
