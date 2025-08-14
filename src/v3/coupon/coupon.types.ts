@@ -1,8 +1,3 @@
-export interface RecurlyCouponPricing {
-	currency: string;
-	discount: number;
-}
-
 export interface RecurlyCouponDiscountTrial {
 	unit: 'day' | 'month' | 'week';
 	length: number;

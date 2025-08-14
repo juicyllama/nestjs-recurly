@@ -9,7 +9,7 @@ describe('Coupon', () => {
 	let service: CouponService;
 	let couponId: string;
 
-	beforeEach(async () => {
+	beforeAll(async () => {
 		if (!canTest()) return;
 
 		const module: TestingModule = await Test.createTestingModule({

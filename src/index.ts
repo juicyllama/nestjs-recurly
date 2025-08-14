@@ -17,6 +17,8 @@ export { CouponService } from './v3/coupon/coupon.service'
 export { RecurlyConfigDto } from './config/config.dto'
 
 //Types
+export { RecurlyCurrency } from './v3/v3.types'
+
 export {
 	RecurlyAccount,
 	RecurlyAccountBalance,
@@ -117,7 +119,6 @@ export {
 	RecurlyCouponDiscount,
 	RecurlyCouponDiscountPricing,
 	RecurlyCouponDiscountTrial,
-	RecurlyCouponPricing,
 } from './v3/coupon/coupon.types'
 
 //DTOs

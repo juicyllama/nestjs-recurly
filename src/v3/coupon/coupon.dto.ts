@@ -1,6 +1,6 @@
 import { IsString, IsOptional, IsBoolean, IsNotEmpty, IsArray, IsNumber, IsEnum, IsDateString } from 'class-validator';
 import { Type } from 'class-transformer';
-import { RecurlyCouponPricing } from './coupon.types';
+import { RecurlyCurrency } from '../v3.types';
 
 export class CouponListParamsDto {
 	@IsOptional()
@@ -85,7 +85,7 @@ export class CouponCreateDto {
 	@IsOptional()
 	@IsArray()
 	@Type(() => Object)
-	currencies?: RecurlyCouponPricing[];
+	currencies?: RecurlyCurrency[];
 
 	@IsOptional()
 	@IsBoolean()
