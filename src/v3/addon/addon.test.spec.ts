@@ -37,13 +37,12 @@ describe('AddOn', () => {
 			currencies: [{ currency: 'USD', unit_amount: 10 }],
 		})
 
-        expect(createdPlan).toBeDefined()
-        expect(createdPlan.id).toBeDefined()
+		expect(createdPlan).toBeDefined()
+		expect(createdPlan.id).toBeDefined()
 	})
 
 	// CREATE - Create a plan add-on
 	it('should create a plan add-on', async () => {
-
 		const createData: CreatePlanAddOnDto = {
 			code: `test-addon-${Date.now()}`,
 			name: 'Test Add-on',
@@ -61,7 +60,6 @@ describe('AddOn', () => {
 
 	// READ - Get a specific plan add-on
 	it('should get a specific plan add-on', async () => {
-
 		const addOn = await service.getPlanAddOn(createdPlan.id as string, createdAddOn.id as string)
 
 		expect(addOn).toBeDefined()
@@ -73,7 +71,6 @@ describe('AddOn', () => {
 
 	// READ - List plan add-ons
 	it('should list plan add-ons', async () => {
-
 		const response = await service.listPlanAddOns(createdPlan.id as string, {
 			limit: 10,
 			order: 'desc',
@@ -97,7 +94,11 @@ describe('AddOn', () => {
 			name: 'Updated Test Add-on',
 		}
 
-		const updatedAddOn = await service.updatePlanAddOn(createdPlan.id as string, createdAddOn.id as string, updateData)
+		const updatedAddOn = await service.updatePlanAddOn(
+			createdPlan.id as string,
+			createdAddOn.id as string,
+			updateData,
+		)
 
 		expect(updatedAddOn).toBeDefined()
 		expect(updatedAddOn.id).toBe(createdAddOn?.id)
@@ -113,13 +114,16 @@ describe('AddOn', () => {
 		expect(removedAddOn.state).toBe('inactive')
 	})
 
-
-    afterAll(async () => {
-
+	afterAll(async () => {
 		try {
 			// Clean up test add-on if it exists
 			if (createdAddOn?.id && createdPlan?.id) {
-                await suppressErrorTesting(service, (plan_id: string, addon_id: string) => service.removePlanAddOn(plan_id, addon_id), createdPlan.id, createdAddOn.id)
+				await suppressErrorTesting(
+					service,
+					(plan_id: string, addon_id: string) => service.removePlanAddOn(plan_id, addon_id),
+					createdPlan.id,
+					createdAddOn.id,
+				)
 			}
 		} catch {
 			// Ignore cleanup errors
@@ -128,11 +132,7 @@ describe('AddOn', () => {
 		try {
 			// Clean up test plan
 			if (createdPlan?.id) {
-				await suppressErrorTesting(
-					planService,
-					(id: string) => planService.removePlan(id),
-					createdPlan.id,
-				)
+				await suppressErrorTesting(planService, (id: string) => planService.removePlan(id), createdPlan.id)
 			}
 		} catch {
 			// Ignore cleanup errors

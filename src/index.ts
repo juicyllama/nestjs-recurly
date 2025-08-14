@@ -10,6 +10,7 @@ export { BillingInfosService } from './v3/accounts/billing/infos/infos.service'
 export { ItemService } from './v3/item/item.service'
 export { PlanService } from './v3/plan/plan.service'
 export { AddOnService } from './v3/addon/addon.service'
+export { MeasuredUnitService } from './v3/measuredUnit/measuredUnit.service'
 
 //Config
 export { RecurlyConfigDto } from './config/config.dto'
@@ -101,6 +102,13 @@ export {
 	RecurlyAddOnPricing,
 } from './v3/addon/addon.types'
 
+export {
+	RecurlyMeasuredUnit,
+	RecurlyMeasuredUnitList,
+	RecurlyMeasuredUnitCreate,
+	RecurlyMeasuredUnitUpdate,
+} from './v3/measuredUnit/measuredUnit.types'
+
 //DTOs
 export {
 	RecurlyListAccountsQueryDto,
@@ -158,3 +166,9 @@ export {
 } from './v3/plan/plan.dto'
 
 export { ListPlanAddOnsDto, CreatePlanAddOnDto, UpdatePlanAddOnDto, AddOnPricingDto } from './v3/addon/addon.dto'
+
+export {
+	RecurlyListMeasuredUnitsQueryDto,
+	RecurlyCreateMeasuredUnitDto,
+	RecurlyUpdateMeasuredUnitDto,
+} from './v3/measuredUnit/measuredUnit.dto'
