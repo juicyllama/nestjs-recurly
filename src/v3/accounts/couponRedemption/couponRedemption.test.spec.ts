@@ -1,27 +1,26 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { ConfigModule } from '@nestjs/config';
-import { CouponRedemptionService } from './couponRedemption.service';
-import { RecurlyV3Module } from '../../v3.module';
-import { CouponService } from '../../coupon/coupon.service';
-import { AccountsService } from '../accounts.service';
-import { RecurlyCouponRedemptionCreateDto } from './couponRedemption.dto';
-import { CouponCreateDto } from '../../coupon/coupon.dto';
-import { canTest, suppressErrorTesting } from '../../v3.helpers';
+import { CouponCreateDto } from '../../coupon/coupon.dto'
+import { CouponModule } from '../../coupon/coupon.module'
+import { CouponService } from '../../coupon/coupon.service'
+import { canTest, suppressErrorTesting } from '../../v3.helpers'
+import { RecurlyV3Module } from '../../v3.module'
+import { AccountsModule } from '../accounts.module'
+import { AccountsService } from '../accounts.service'
+import { RecurlyCouponRedemptionCreateDto } from './couponRedemption.dto'
+import { CouponRedemptionModule } from './couponRedemption.module'
+import { CouponRedemptionService } from './couponRedemption.service'
 import { faker } from '@faker-js/faker'
-import { AccountsModule } from '../accounts.module';
-import { CouponModule } from '../../coupon/coupon.module';
-import { CouponRedemptionModule } from './couponRedemption.module';
-
+import { ConfigModule } from '@nestjs/config'
+import { Test, TestingModule } from '@nestjs/testing'
 
 describe('Coupon Redemption', () => {
-	let service: CouponRedemptionService;
-	let couponService: CouponService;
-	let accountsService: AccountsService;
-	let testAccountId: string;
-	let couponId: string;
+	let service: CouponRedemptionService
+	let couponService: CouponService
+	let accountsService: AccountsService
+	let testAccountId: string
+	let couponId: string
 
-    beforeAll(async () => {
-		if(!canTest()) {
+	beforeAll(async () => {
+		if (!canTest()) {
 			return
 		}
 
@@ -29,9 +28,9 @@ describe('Coupon Redemption', () => {
 			imports: [ConfigModule.forRoot(), RecurlyV3Module, AccountsModule, CouponModule, CouponRedemptionModule],
 		}).compile()
 
-		service = module.get<CouponRedemptionService>(CouponRedemptionService);
-		couponService = module.get<CouponService>(CouponService);
-		accountsService = module.get<AccountsService>(AccountsService);
+		service = module.get<CouponRedemptionService>(CouponRedemptionService)
+		couponService = module.get<CouponService>(CouponService)
+		accountsService = module.get<AccountsService>(AccountsService)
 
 		// Create a test account for the acquisition tests
 		const testAccount = await accountsService.createAccount({
@@ -50,117 +49,108 @@ describe('Coupon Redemption', () => {
 			discount_type: 'percent',
 			discount_percent: 10,
 			duration: 'forever',
-		};
-		const coupon = await couponService.createCoupon(couponData);
-		couponId = coupon.id;
-	});
+		}
+		const coupon = await couponService.createCoupon(couponData)
+		couponId = coupon.id
+	})
 
 	describe('Coupon Redemption CRUD Operations', () => {
-	
 		it('should create a coupon redemption', async () => {
 			const redemptionData: RecurlyCouponRedemptionCreateDto = {
 				coupon_id: couponId,
 				currency: 'USD',
-			};
+			}
 
-			const redemption = await service.createCouponRedemption(testAccountId, redemptionData);
+			const redemption = await service.createCouponRedemption(testAccountId, redemptionData)
 
-			expect(redemption).toBeDefined();
-			expect(redemption.id).toBeDefined();
-			expect(redemption.state).toBe('active');
-			expect(redemption.coupon).toBeDefined();
-			expect(redemption.coupon.id).toBe(couponId);
-		});
+			expect(redemption).toBeDefined()
+			expect(redemption.id).toBeDefined()
+			expect(redemption.state).toBe('active')
+			expect(redemption.coupon).toBeDefined()
+			expect(redemption.coupon.id).toBe(couponId)
+		})
 
 		it('should list account coupon redemptions', async () => {
 			// First create a redemption
 			const redemptionData: RecurlyCouponRedemptionCreateDto = {
 				coupon_id: couponId,
 				currency: 'USD',
-			};
-			await service.createCouponRedemption(testAccountId, redemptionData);
+			}
+			await service.createCouponRedemption(testAccountId, redemptionData)
 
 			// List redemptions
-			const result = await service.listAccountCouponRedemptions(testAccountId, { limit: 10 });
+			const result = await service.listAccountCouponRedemptions(testAccountId, { limit: 10 })
 
-			expect(result).toBeDefined();
-			expect(result.object).toBe('list');
-			expect(Array.isArray(result.data)).toBe(true);
-			expect(result.data.length).toBeGreaterThan(0);
-		});
+			expect(result).toBeDefined()
+			expect(result.object).toBe('list')
+			expect(Array.isArray(result.data)).toBe(true)
+			expect(result.data.length).toBeGreaterThan(0)
+		})
 
 		it('should list active coupon redemptions', async () => {
 			// First create a redemption
 			const redemptionData: RecurlyCouponRedemptionCreateDto = {
 				coupon_id: couponId,
 				currency: 'USD',
-			};
-			await service.createCouponRedemption(testAccountId, redemptionData);
+			}
+			await service.createCouponRedemption(testAccountId, redemptionData)
 
 			// List active redemptions
-			const result = await service.listActiveCouponRedemptions(testAccountId);
+			const result = await service.listActiveCouponRedemptions(testAccountId)
 
-			expect(result).toBeDefined();
-			expect(result.object).toBe('list');
-			expect(Array.isArray(result.data)).toBe(true);
-			expect(result.data.length).toBeGreaterThan(0);
-			expect(result.data.every(r => r.state === 'active')).toBe(true);
-		});
+			expect(result).toBeDefined()
+			expect(result.object).toBe('list')
+			expect(Array.isArray(result.data)).toBe(true)
+			expect(result.data.length).toBeGreaterThan(0)
+			expect(result.data.every(r => r.state === 'active')).toBe(true)
+		})
 
 		it('should remove a coupon redemption', async () => {
 			// First create a redemption
 			const redemptionData: RecurlyCouponRedemptionCreateDto = {
 				coupon_id: couponId,
 				currency: 'USD',
-			};
-			await service.createCouponRedemption(testAccountId, redemptionData);
+			}
+			await service.createCouponRedemption(testAccountId, redemptionData)
 
 			// Remove the redemption
-			const removedRedemption = await service.removeCouponRedemption(testAccountId);
+			const removedRedemption = await service.removeCouponRedemption(testAccountId)
 
-			expect(removedRedemption).toBeDefined();
-			expect(removedRedemption.id).toBeDefined();
+			expect(removedRedemption).toBeDefined()
+			expect(removedRedemption.id).toBeDefined()
 
 			// Verify it's removed by checking active redemptions
-			const activeRedemptions = await service.listActiveCouponRedemptions(testAccountId);
-			expect(activeRedemptions.data.length).toBe(0);
-		});
+			await suppressErrorTesting(service, (id: string) => service.listActiveCouponRedemptions(id), testAccountId)
+		})
 
-        //// Note: Invoice coupon redemptions require a invoice to be created first (we need to implement invoices for this test first)
-		it.skip('should list invoice coupon redemptions', async () => {
-			
-		});
+		//// Note: Invoice coupon redemptions require a invoice to be created first (we need to implement invoices for this test first)
+		it.skip('should list invoice coupon redemptions', async () => {})
 
-        // Note: Subscription coupon redemptions require a subscription to be created first (we need to implement subscriptions for this test first)
-		it.skip('should list subscription coupon redemptions', async () => {
-			
-		});
-	});
+		// Note: Subscription coupon redemptions require a subscription to be created first (we need to implement subscriptions for this test first)
+		it.skip('should list subscription coupon redemptions', async () => {})
+	})
 
-    // Cleanup: Remove test data
-		afterAll(async () => {
-			if (!canTest()) return;
+	// Cleanup: Remove test data
+	afterAll(async () => {
+		if (!canTest()) return
 
-			// Try to remove coupon redemption first
-			if (testAccountId) {
-				await suppressErrorTesting(service, async () => {
-					await service.removeCouponRedemption(testAccountId);
-				});
-			}
+		// Try to remove coupon redemption first
+		if (testAccountId) {
+			await suppressErrorTesting(service, (id: string) => service.removeCouponRedemption(id), testAccountId)
+		}
 
-			// Deactivate coupon
-			if (couponId) {
-				await suppressErrorTesting(couponService, async () => {
-					await couponService.deactivateCoupon(couponId);
-				});
-			}
+		// Deactivate coupon
+		if (couponId) {
+			await suppressErrorTesting(couponService, (id: string) => couponService.deactivateCoupon(id), couponId)
+		}
 
-			// Deactivate account
-			if (testAccountId) {
-				await suppressErrorTesting(accountsService, async () => {
-					await accountsService.deactivateAccount(testAccountId);
-				});
-			}
-		});
-
-});
+		// Deactivate account
+		if (testAccountId) {
+			await suppressErrorTesting(
+				accountsService,
+				(id: string) => accountsService.deactivateAccount(id),
+				testAccountId,
+			)
+		}
+	})
+})
