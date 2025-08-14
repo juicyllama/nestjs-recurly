@@ -1,4 +1,4 @@
-import { canTest } from '../v3.helpers'
+import { canTest, suppressErrorTesting } from '../v3.helpers'
 import { RecurlyV3Module } from '../v3.module'
 import { RecurlyCreateItemDto, RecurlyUpdateItemDto } from './item.dto'
 import { ItemModule } from './item.module'
@@ -156,7 +156,7 @@ describe('ItemService', () => {
 	afterAll(async () => {
 		if (createdItem && createdItem.id) {
 			try {
-				await service.deactivateItem(createdItem.id)
+                await suppressErrorTesting(service, (id: string) => service.deactivateItem(id), createdItem.id)
 			} catch {
 				// Item might already be deactivated, ignore error
 			}
