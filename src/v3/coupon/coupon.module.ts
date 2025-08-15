@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { RecurlyConfigDto } from '../../config/config.dto';
-import { ConfigValidationModule } from '../../config/config.module';
-import { CouponService } from './coupon.service';
+import { RecurlyConfigDto } from '../../config/config.dto'
+import { ConfigValidationModule } from '../../config/config.module'
+import { CouponService } from './coupon.service'
+import { Module } from '@nestjs/common'
 
 @Module({
 	imports: [ConfigValidationModule.register(RecurlyConfigDto)],

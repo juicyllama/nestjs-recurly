@@ -1,157 +1,157 @@
-import { IsString, IsOptional, IsBoolean, IsNotEmpty, IsArray, IsNumber, IsEnum, IsDateString } from 'class-validator';
-import { Type } from 'class-transformer';
-import { RecurlyCurrency } from '../v3.types';
+import { RecurlyCurrency } from '../v3.types'
+import { Type } from 'class-transformer'
+import { IsString, IsOptional, IsBoolean, IsNotEmpty, IsArray, IsNumber, IsEnum, IsDateString } from 'class-validator'
 
 export class CouponListParamsDto {
 	@IsOptional()
 	@IsString()
-	ids?: string;
+	ids?: string
 
 	@IsOptional()
 	@IsNumber()
 	@Type(() => Number)
-	limit?: number;
+	limit?: number
 
 	@IsOptional()
 	@IsString()
-	order?: 'asc' | 'desc';
+	order?: 'asc' | 'desc'
 
 	@IsOptional()
 	@IsString()
-	sort?: 'created_at' | 'updated_at';
+	sort?: 'created_at' | 'updated_at'
 
 	@IsOptional()
 	@IsDateString()
-	begin_time?: string;
+	begin_time?: string
 
 	@IsOptional()
 	@IsDateString()
-	end_time?: string;
+	end_time?: string
 
 	@IsOptional()
 	@IsString()
-	state?: string;
+	state?: string
 }
 
 export class CouponCreateDto {
 	@IsNotEmpty()
 	@IsString()
-	code!: string;
+	code!: string
 
 	@IsNotEmpty()
 	@IsString()
-	name!: string;
+	name!: string
 
 	@IsOptional()
 	@IsNumber()
-	max_redemptions?: number;
+	max_redemptions?: number
 
 	@IsOptional()
 	@IsNumber()
-	max_redemptions_per_account?: number;
+	max_redemptions_per_account?: number
 
 	@IsOptional()
 	@IsString()
-	unique_code_template?: string;
+	unique_code_template?: string
 
 	@IsNotEmpty()
 	@IsEnum(['forever', 'single_use', 'temporal'])
-	duration!: 'forever' | 'single_use' | 'temporal';
+	duration!: 'forever' | 'single_use' | 'temporal'
 
 	@IsOptional()
 	@IsNumber()
-	temporal_amount?: number;
+	temporal_amount?: number
 
 	@IsOptional()
 	@IsEnum(['day', 'month', 'week', 'year'])
-	temporal_unit?: 'day' | 'month' | 'week' | 'year';
+	temporal_unit?: 'day' | 'month' | 'week' | 'year'
 
 	@IsNotEmpty()
 	@IsEnum(['fixed', 'free_trial', 'percent'])
-	discount_type!: 'fixed' | 'free_trial' | 'percent';
+	discount_type!: 'fixed' | 'free_trial' | 'percent'
 
 	@IsOptional()
 	@IsNumber()
-	discount_percent?: number;
+	discount_percent?: number
 
 	@IsOptional()
 	@IsEnum(['day', 'month', 'week'])
-	free_trial_unit?: 'day' | 'month' | 'week';
+	free_trial_unit?: 'day' | 'month' | 'week'
 
 	@IsOptional()
 	@IsNumber()
-	free_trial_amount?: number;
+	free_trial_amount?: number
 
 	@IsOptional()
 	@IsArray()
 	@Type(() => Object)
-	currencies?: RecurlyCurrency[];
+	currencies?: RecurlyCurrency[]
 
 	@IsOptional()
 	@IsBoolean()
-	applies_to_all_plans?: boolean;
+	applies_to_all_plans?: boolean
 
 	@IsOptional()
 	@IsBoolean()
-	applies_to_all_items?: boolean;
+	applies_to_all_items?: boolean
 
 	@IsOptional()
 	@IsBoolean()
-	applies_to_non_plan_charges?: boolean;
+	applies_to_non_plan_charges?: boolean
 
 	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
-	plan_codes?: string[];
+	plan_codes?: string[]
 
 	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
-	item_codes?: string[];
+	item_codes?: string[]
 
 	@IsOptional()
 	@IsEnum(['account', 'subscription'])
-	redemption_resource?: 'account' | 'subscription';
+	redemption_resource?: 'account' | 'subscription'
 
 	@IsOptional()
 	@IsEnum(['bulk', 'single_code'])
-	coupon_type?: 'bulk' | 'single_code';
+	coupon_type?: 'bulk' | 'single_code'
 
 	@IsOptional()
 	@IsString()
-	hosted_description?: string;
+	hosted_description?: string
 
 	@IsOptional()
 	@IsString()
-	invoice_description?: string;
+	invoice_description?: string
 
 	@IsOptional()
 	@IsString()
-	redeem_by_date?: string;
+	redeem_by_date?: string
 }
 
 export class CouponUpdateDto {
 	@IsOptional()
 	@IsString()
-	name?: string;
+	name?: string
 
 	@IsOptional()
 	@IsNumber()
-	max_redemptions?: number;
+	max_redemptions?: number
 
 	@IsOptional()
 	@IsNumber()
-	max_redemptions_per_account?: number;
+	max_redemptions_per_account?: number
 
 	@IsOptional()
 	@IsString()
-	hosted_description?: string;
+	hosted_description?: string
 
 	@IsOptional()
 	@IsString()
-	invoice_description?: string;
+	invoice_description?: string
 
 	@IsOptional()
 	@IsString()
-	redeem_by_date?: string;
+	redeem_by_date?: string
 }

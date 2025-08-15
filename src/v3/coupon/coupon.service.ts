@@ -1,14 +1,14 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { RecurlyConfigDto } from '../../config/config.dto';
-import { InjectConfig } from '../../config/config.provider';
-import { RECURLY_API_BASE_URL } from '../v3.constants';
-import { buildQueryString, checkResponseIsOk, getHeaders } from '../v3.helpers';
-import { CouponCreateDto, CouponListParamsDto, CouponUpdateDto } from './coupon.dto';
-import { RecurlyCoupon, RecurlyCouponList } from './coupon.types';
+import { RecurlyConfigDto } from '../../config/config.dto'
+import { InjectConfig } from '../../config/config.provider'
+import { RECURLY_API_BASE_URL } from '../v3.constants'
+import { buildQueryString, checkResponseIsOk, getHeaders } from '../v3.helpers'
+import { CouponCreateDto, CouponListParamsDto, CouponUpdateDto } from './coupon.dto'
+import { RecurlyCoupon, RecurlyCouponList } from './coupon.types'
+import { Injectable, Logger } from '@nestjs/common'
 
 @Injectable()
 export class CouponService {
-	private readonly logger = new Logger(CouponService.name);
+	private readonly logger = new Logger(CouponService.name)
 
 	constructor(@InjectConfig(RecurlyConfigDto) private readonly config: RecurlyConfigDto) {}
 
@@ -19,19 +19,18 @@ export class CouponService {
 	 * @returns List of coupons
 	 */
 	async listCoupons(params: CouponListParamsDto = {}, apiKey?: string): Promise<RecurlyCouponList> {
-		
-		let url = `${RECURLY_API_BASE_URL}/coupons`;
+		let url = `${RECURLY_API_BASE_URL}/coupons`
 
-        if (params && Object.keys(params).length > 0) {
-            url += '?' + buildQueryString(params);
-        }
+		if (params && Object.keys(params).length > 0) {
+			url += '?' + buildQueryString(params)
+		}
 
 		const response = await fetch(url, {
 			method: 'GET',
 			headers: getHeaders(this.config, apiKey),
-		});
-		await checkResponseIsOk(response, this.logger, 'List Coupons');
-		return response.json();
+		})
+		await checkResponseIsOk(response, this.logger, 'List Coupons')
+		return response.json()
 	}
 
 	/**
@@ -41,14 +40,14 @@ export class CouponService {
 	 * @returns Created coupon
 	 */
 	async createCoupon(data: CouponCreateDto, apiKey?: string): Promise<RecurlyCoupon> {
-		const url = `${RECURLY_API_BASE_URL}/coupons`;
+		const url = `${RECURLY_API_BASE_URL}/coupons`
 		const response = await fetch(url, {
 			method: 'POST',
 			headers: getHeaders(this.config, apiKey),
 			body: JSON.stringify(data),
-		});
-		await checkResponseIsOk(response, this.logger, 'Create Coupon');
-		return response.json();
+		})
+		await checkResponseIsOk(response, this.logger, 'Create Coupon')
+		return response.json()
 	}
 
 	/**
@@ -58,13 +57,13 @@ export class CouponService {
 	 * @returns Coupon details
 	 */
 	async getCoupon(couponId: string, apiKey?: string): Promise<RecurlyCoupon> {
-		const url = `${RECURLY_API_BASE_URL}/coupons/${couponId}`;
+		const url = `${RECURLY_API_BASE_URL}/coupons/${couponId}`
 		const response = await fetch(url, {
 			method: 'GET',
 			headers: getHeaders(this.config, apiKey),
-		});
-		await checkResponseIsOk(response, this.logger, 'Get Coupon');
-		return response.json();
+		})
+		await checkResponseIsOk(response, this.logger, 'Get Coupon')
+		return response.json()
 	}
 
 	/**
@@ -75,14 +74,14 @@ export class CouponService {
 	 * @returns Updated coupon
 	 */
 	async updateCoupon(couponId: string, data: CouponUpdateDto, apiKey?: string): Promise<RecurlyCoupon> {
-		const url = `${RECURLY_API_BASE_URL}/coupons/${couponId}`;
+		const url = `${RECURLY_API_BASE_URL}/coupons/${couponId}`
 		const response = await fetch(url, {
 			method: 'PUT',
 			headers: getHeaders(this.config, apiKey),
 			body: JSON.stringify(data),
-		});
-		await checkResponseIsOk(response, this.logger, 'Update Coupon');
-		return response.json();
+		})
+		await checkResponseIsOk(response, this.logger, 'Update Coupon')
+		return response.json()
 	}
 
 	/**
@@ -92,13 +91,13 @@ export class CouponService {
 	 * @returns Deactivated coupon
 	 */
 	async deactivateCoupon(couponId: string, apiKey?: string): Promise<RecurlyCoupon> {
-		const url = `${RECURLY_API_BASE_URL}/coupons/${couponId}`;
+		const url = `${RECURLY_API_BASE_URL}/coupons/${couponId}`
 		const response = await fetch(url, {
 			method: 'DELETE',
 			headers: getHeaders(this.config, apiKey),
-		});
-		await checkResponseIsOk(response, this.logger, 'Deactivate Coupon');
-		return response.json();
+		})
+		await checkResponseIsOk(response, this.logger, 'Deactivate Coupon')
+		return response.json()
 	}
 
 	/**
@@ -109,13 +108,13 @@ export class CouponService {
 	 * @returns Restored coupon
 	 */
 	async restoreCoupon(couponId: string, data: CouponUpdateDto, apiKey?: string): Promise<RecurlyCoupon> {
-		const url = `${RECURLY_API_BASE_URL}/coupons/${couponId}/restore`;
+		const url = `${RECURLY_API_BASE_URL}/coupons/${couponId}/restore`
 		const response = await fetch(url, {
 			method: 'PUT',
 			headers: getHeaders(this.config, apiKey),
 			body: JSON.stringify(data),
-		});
-		await checkResponseIsOk(response, this.logger, 'Restore Coupon');
-		return response.json();
+		})
+		await checkResponseIsOk(response, this.logger, 'Restore Coupon')
+		return response.json()
 	}
 }

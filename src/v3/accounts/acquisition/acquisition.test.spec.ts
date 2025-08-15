@@ -116,9 +116,13 @@ describe('Account Acquisition', () => {
 
 	afterAll(async () => {
 		// Clean up test account
-		if (testAccountId && canTest()) {
+		if (testAccountId) {
 			try {
-				await accountsService.deactivateAccount(testAccountId)
+				await suppressErrorTesting(
+					accountsService,
+					(id: string) => accountsService.deactivateAccount(id),
+					testAccountId,
+				)
 			} catch {
 				// Account might already be deactivated
 			}

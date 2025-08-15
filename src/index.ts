@@ -5,9 +5,10 @@ export { AccountNotesModule } from './v3/accounts/notes/notes.module'
 export { AccountAcquisitionModule } from './v3/accounts/acquisition/acquisition.module'
 export { BillingInfoModule } from './v3/accounts/billing/info/info.module'
 export { BillingInfosModule } from './v3/accounts/billing/infos/infos.module'
+export { CouponRedemptionModule } from './v3/accounts/couponRedemption/couponRedemption.module'
 export { PlanModule } from './v3/plan/plan.module'
 export { ItemModule } from './v3/item/item.module'
-export { AddOnModule } from './v3/addon/addon.module'
+export { AddOnModule } from './v3/plan/addon/addon.module'
 export { MeasuredUnitModule } from './v3/measuredUnit/measuredUnit.module'
 
 //Service
@@ -16,9 +17,10 @@ export { AccountNotesService } from './v3/accounts/notes/notes.service'
 export { AccountAcquisitionService } from './v3/accounts/acquisition/acquisition.service'
 export { BillingInfoService } from './v3/accounts/billing/info/info.service'
 export { BillingInfosService } from './v3/accounts/billing/infos/infos.service'
+export { CouponRedemptionService } from './v3/accounts/couponRedemption/couponRedemption.service'
 export { ItemService } from './v3/item/item.service'
 export { PlanService } from './v3/plan/plan.service'
-export { AddOnService } from './v3/addon/addon.service'
+export { AddOnService } from './v3/plan/addon/addon.service'
 export { MeasuredUnitService } from './v3/measuredUnit/measuredUnit.service'
 export { CouponService } from './v3/coupon/coupon.service'
 
@@ -47,6 +49,13 @@ export {
 	RecurlyAccountMini,
 	RecurlyAccountAcquisitionListResponse,
 } from './v3/accounts/acquisition/acquisition.types'
+
+export {
+	RecurlyCouponRedemption,
+	RecurlyCouponRedemptionMini,
+	RecurlyCouponRedemptionList,
+	RecurlyCouponRedemptionCreate,
+} from './v3/accounts/couponRedemption/couponRedemption.types'
 
 export {
 	RecurlyBillingInfo,
@@ -112,7 +121,7 @@ export {
 	RecurlyAddOnCreate,
 	RecurlyAddOnUpdate,
 	RecurlyAddOnPricing,
-} from './v3/addon/addon.types'
+} from './v3/plan/addon/addon.types'
 
 export {
 	RecurlyMeasuredUnit,
@@ -147,6 +156,11 @@ export {
 	RecurlyAccountAcquisitionUpdateDto,
 	RecurlyListAccountAcquisitionQueryDto,
 } from './v3/accounts/acquisition/acquisition.dto'
+
+export {
+	RecurlyListCouponRedemptionsQueryDto,
+	RecurlyCouponRedemptionCreateDto,
+} from './v3/accounts/couponRedemption/couponRedemption.dto'
 
 export {
 	RecurlyUpdateBillingInfoDto,
@@ -187,7 +201,7 @@ export {
 	RecurlyCreatePlanAddOnDto,
 	RecurlyUpdatePlanAddOnDto,
 	RecurlyAddOnPricingDto,
-} from './v3/addon/addon.dto'
+} from './v3/plan/addon/addon.dto'
 
 export {
 	RecurlyListMeasuredUnitsQueryDto,
@@ -195,8 +209,4 @@ export {
 	RecurlyUpdateMeasuredUnitDto,
 } from './v3/measuredUnit/measuredUnit.dto'
 
-export {
-	CouponListParamsDto,
-	CouponCreateDto,
-	CouponUpdateDto,
-} from './v3/coupon/coupon.dto'
+export { CouponListParamsDto, CouponCreateDto, CouponUpdateDto } from './v3/coupon/coupon.dto'
