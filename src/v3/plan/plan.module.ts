@@ -8,6 +8,6 @@ import { Module } from '@nestjs/common'
 	imports: [ConfigValidationModule.register(RecurlyConfigDto), AddOnModule],
 	controllers: [],
 	providers: [PlanService],
-	exports: [PlanService],
+	exports: [PlanService, AddOnModule],
 })
 export class PlanModule {}

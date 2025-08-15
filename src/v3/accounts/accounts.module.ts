@@ -19,6 +19,13 @@ import { Module } from '@nestjs/common'
 	],
 	controllers: [],
 	providers: [AccountsService],
-	exports: [AccountsService],
+	exports: [
+		AccountsService,
+		AccountNotesModule,
+		AccountAcquisitionModule,
+		BillingInfoModule,
+		BillingInfosModule,
+		CouponRedemptionModule,
+	],
 })
 export class AccountsModule {}

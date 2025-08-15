@@ -16,5 +16,12 @@ import { Module } from '@nestjs/common'
 		MeasuredUnitModule,
 		CouponModule,
 	],
+	exports: [
+		AccountsModule,
+		ItemModule,
+		PlanModule,
+		MeasuredUnitModule,
+		CouponModule,
+	]
 })
 export class RecurlyV3Module {}
