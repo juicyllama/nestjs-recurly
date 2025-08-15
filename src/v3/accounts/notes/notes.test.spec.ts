@@ -28,7 +28,7 @@ describe('Account Notes', () => {
 		}
 
 		const moduleRef = await Test.createTestingModule({
-			imports: [ConfigModule.forRoot(), RecurlyV3Module, AccountsModule, AccountNotesModule],
+			imports: [ConfigModule.forRoot(), RecurlyV3Module],
 		}).compile()
 
 		notesService = moduleRef.get<AccountNotesService>(AccountNotesService)

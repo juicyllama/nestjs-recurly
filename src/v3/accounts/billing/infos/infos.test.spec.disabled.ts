@@ -22,7 +22,7 @@ describe('Billing Infos', () => {
 		}
 
 		const moduleRef = await Test.createTestingModule({
-			imports: [ConfigModule.forRoot(), RecurlyV3Module, AccountsModule, BillingInfosModule],
+			imports: [ConfigModule.forRoot(), RecurlyV3Module],
 		}).compile()
 
 		service = moduleRef.get<BillingInfosService>(BillingInfosService)

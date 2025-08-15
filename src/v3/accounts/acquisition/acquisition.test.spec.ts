@@ -21,7 +21,7 @@ describe('Account Acquisition', () => {
 		}
 
 		const module: TestingModule = await Test.createTestingModule({
-			imports: [ConfigModule.forRoot(), RecurlyV3Module, AccountsModule, AccountAcquisitionModule],
+			imports: [ConfigModule.forRoot(), RecurlyV3Module],
 		}).compile()
 
 		service = module.get<AccountAcquisitionService>(AccountAcquisitionService)

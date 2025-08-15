@@ -14,10 +14,7 @@ describe('Coupon', () => {
 
 		const module: TestingModule = await Test.createTestingModule({
 			imports: [
-				ConfigModule.forRoot({
-					envFilePath: '.env',
-					isGlobal: true,
-				}),
+				ConfigModule.forRoot(), 
 				RecurlyV3Module,
 			],
 		}).compile()

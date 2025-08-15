@@ -18,7 +18,7 @@ describe('ItemService', () => {
 		}
 
 		const moduleRef: TestingModule = await Test.createTestingModule({
-			imports: [ConfigModule.forRoot(), RecurlyV3Module, ItemModule],
+			imports: [ConfigModule.forRoot(), RecurlyV3Module],
 		}).compile()
 
 		service = moduleRef.get<ItemService>(ItemService)

@@ -25,7 +25,7 @@ describe('Coupon Redemption', () => {
 		}
 
 		const module: TestingModule = await Test.createTestingModule({
-			imports: [ConfigModule.forRoot(), RecurlyV3Module, AccountsModule, CouponModule, CouponRedemptionModule],
+			imports: [ConfigModule.forRoot(), RecurlyV3Module],
 		}).compile()
 
 		service = module.get<CouponRedemptionService>(CouponRedemptionService)

@@ -20,9 +20,7 @@ describe('AddOn', () => {
 
 		module = await Test.createTestingModule({
 			imports: [
-				ConfigModule.forRoot({
-					isGlobal: true,
-				}),
+				ConfigModule.forRoot(),
 				RecurlyV3Module,
 			],
 		}).compile()
