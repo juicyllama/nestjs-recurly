@@ -13,10 +13,7 @@ describe('Coupon', () => {
 		if (!canTest()) return
 
 		const module: TestingModule = await Test.createTestingModule({
-			imports: [
-				ConfigModule.forRoot(), 
-				RecurlyV3Module,
-			],
+			imports: [ConfigModule.forRoot(), RecurlyV3Module],
 		}).compile()
 
 		service = module.get<CouponService>(CouponService)

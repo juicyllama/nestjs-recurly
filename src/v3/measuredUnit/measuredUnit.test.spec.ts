@@ -15,10 +15,7 @@ describe('MeasuredUnit', () => {
 		if (!canTest()) return
 
 		module = await Test.createTestingModule({
-			imports: [
-				ConfigModule.forRoot(),
-				RecurlyV3Module,
-			],
+			imports: [ConfigModule.forRoot(), RecurlyV3Module],
 		}).compile()
 
 		service = module.get<MeasuredUnitService>(MeasuredUnitService)
