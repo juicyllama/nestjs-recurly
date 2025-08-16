@@ -1,8 +1,6 @@
 import { canTest, suppressErrorTesting } from '../../v3.helpers'
 import { RecurlyV3Module } from '../../v3.module'
-import { AccountsModule } from '../accounts.module'
 import { AccountsService } from '../accounts.service'
-import { AccountAcquisitionModule } from './acquisition.module'
 import { AccountAcquisitionService } from './acquisition.service'
 import { RecurlyAccountAcquisitionChannel } from './acquisition.types'
 import { faker } from '@faker-js/faker'

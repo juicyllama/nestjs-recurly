@@ -1,6 +1,5 @@
 import { canTest } from '../v3.helpers'
 import { RecurlyV3Module } from '../v3.module'
-import { AccountsModule } from './accounts.module'
 import { AccountsService } from './accounts.service'
 import { RecurlyAccount, RecurlyAccountBalance, RecurlyAccountListResponse } from './accounts.types'
 import { faker } from '@faker-js/faker'
