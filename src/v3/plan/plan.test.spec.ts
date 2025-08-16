@@ -1,7 +1,6 @@
 import { canTest, suppressErrorTesting } from '../v3.helpers'
 import { RecurlyV3Module } from '../v3.module'
 import { RecurlyCreatePlanDto, RecurlyUpdatePlanDto } from './plan.dto'
-import { PlanModule } from './plan.module'
 import { PlanService } from './plan.service'
 import { RecurlyPlan } from './plan.types'
 import { ConfigModule } from '@nestjs/config'

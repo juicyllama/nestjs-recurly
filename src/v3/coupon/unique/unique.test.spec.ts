@@ -20,10 +20,7 @@ describe.skip('Unique Coupon Code - TODO: Decide how to handle the wait between 
 		if (!canTest()) return
 
 		module = await Test.createTestingModule({
-			imports: [
-				ConfigModule.forRoot(),
-				RecurlyV3Module,
-			],
+			imports: [ConfigModule.forRoot(), RecurlyV3Module],
 		}).compile()
 
 		service = module.get<UniqueCouponCodeService>(UniqueCouponCodeService)
@@ -32,12 +29,12 @@ describe.skip('Unique Coupon Code - TODO: Decide how to handle the wait between 
 		// First, let's check if there's an existing bulk coupon we can use
 		const coupons = await couponService.listCoupons({ limit: 100 })
 		const existingBulkCoupon = coupons.data.find(c => c.coupon_type === 'bulk' && c.state === 'redeemable')
-		
+
 		if (existingBulkCoupon) {
 			createdCoupon = existingBulkCoupon
 		} else {
 			// Create a test bulk coupon with a simple template
-            const couponCode = `${Date.now()}`
+			const couponCode = `${Date.now()}`
 			createdCoupon = await couponService.createCoupon({
 				code: couponCode,
 				name: 'Test Bulk Coupon for Unique Codes',
@@ -54,8 +51,8 @@ describe.skip('Unique Coupon Code - TODO: Decide how to handle the wait between 
 		expect(createdCoupon.id).toBeDefined()
 		expect(createdCoupon.coupon_type).toBe('bulk')
 	})
-    
-    // CREATE - Generate unique coupon codes
+
+	// CREATE - Generate unique coupon codes
 	it('should generate unique coupon codes', async () => {
 		const generateData: RecurlyGenerateUniqueCouponCodesDto = {
 			number_of_unique_codes: 5,
@@ -63,7 +60,7 @@ describe.skip('Unique Coupon Code - TODO: Decide how to handle the wait between 
 
 		generatedCodesParams = await service.generateUniqueCouponCodes(createdCoupon.id, generateData)
 
-        console.log('Generated Codes Params:', generatedCodesParams)
+		console.log('Generated Codes Params:', generatedCodesParams)
 
 		expect(generatedCodesParams).toBeDefined()
 		expect(generatedCodesParams.limit).toBe(5)

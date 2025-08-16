@@ -1,7 +1,6 @@
 import { canTest, suppressErrorTesting } from '../v3.helpers'
 import { RecurlyV3Module } from '../v3.module'
 import { RecurlyCreateItemDto, RecurlyUpdateItemDto } from './item.dto'
-import { ItemModule } from './item.module'
 import { ItemService } from './item.service'
 import { RecurlyItem } from './item.types'
 import { ConfigModule } from '@nestjs/config'
