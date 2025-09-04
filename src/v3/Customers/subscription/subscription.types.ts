@@ -79,23 +79,6 @@ export interface RecurlySubscriptionShipping {
 	amount?: number
 }
 
-export interface RecurlyDiscount {
-	type?: string
-	percent?: number
-	currencies?: RecurlyCurrencyAmount[]
-	trial?: RecurlyTrial
-}
-
-export interface RecurlyCurrencyAmount {
-	currency?: string
-	amount?: number
-}
-
-export interface RecurlyTrial {
-	unit?: string
-	length?: number
-}
-
 export interface RecurlySubscriptionChange {
 	id?: string
 	object?: string
