@@ -1,6 +1,8 @@
 import { RecurlyInvoiceCollection } from '../../InvoicesPayments/invoice/invoice.types'
 import { checkResponseIsOk, getBaseUrl, getHeaders } from '../../v3.helpers'
 import { RecurlyPurchaseCreateDto } from './purchase.dto'
+import { PurchaseException } from '@/v3/Customers/purchase/purchase.exception'
+import { RecurlyPurchaseError } from '@/v3/Customers/purchase/purchase.types'
 import { RecurlyAPIConnection } from '@/v3/v3.types'
 import { RecurlyConfigDto } from '@config/config.dto'
 import { InjectConfig } from '@config/config.provider'
@@ -26,8 +28,14 @@ export class PurchaseService {
 			body: JSON.stringify(data),
 		})
 
+		const responseJson: unknown = await response.json()
+
+		if (!response.ok) {
+			throw new PurchaseException(responseJson as RecurlyPurchaseError)
+		}
+
 		await checkResponseIsOk(response, this.logger, 'Create Purchase')
-		return (await response.json()) as RecurlyInvoiceCollection
+		return responseJson as RecurlyInvoiceCollection
 	}
 
 	/**
