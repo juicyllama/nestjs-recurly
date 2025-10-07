@@ -305,7 +305,11 @@ export {
 	RecurlyPaymentGatewayUsed,
 	RecurlyTaxDetail,
 	RecurlyFraudRiskRule,
+	RecurlyPurchaseError,
 } from './v3/Customers/purchase/purchase.types'
+
+// Purchase Exceptions
+export { PurchaseException } from './v3/Customers/purchase/purchase.exception'
 
 //DTOs
 export { RecurlyAddressDto, RecurlyCostDto } from './v3/v3.dtos'

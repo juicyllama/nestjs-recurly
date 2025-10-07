@@ -129,3 +129,22 @@ export interface RecurlyFraudRiskRule {
 	code?: string
 	message?: string
 }
+
+export interface RecurlyPurchaseError {
+	error?: {
+		type: string
+		message: string
+		transaction_error?: {
+			object: string
+			transaction_id: string
+			category: string
+			code: string
+			decline_code?: string
+			message: string
+			merchant_advice?: string
+			three_d_secure_action_token_id?: string
+			fraud_info?: unknown
+		}
+		params?: { param: string; message: string }[]
+	}
+}
