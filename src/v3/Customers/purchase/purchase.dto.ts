@@ -15,6 +15,10 @@ import {
 } from 'class-validator'
 
 // Billing Info DTO
+
+// Billing Info DTO
+
+// Billing Info DTO
 export class RecurlyBillingInfoDto {
 	@IsOptional()
 	@IsString()
@@ -205,6 +209,10 @@ export class RecurlyAccountPurchaseDto {
 	@IsOptional()
 	@IsEnum(['self', 'parent'])
 	bill_to?: 'self' | 'parent'
+
+	@IsOptional()
+	@IsString()
+	address?: RecurlyAddressDto
 
 	@IsOptional()
 	@ValidateNested()
