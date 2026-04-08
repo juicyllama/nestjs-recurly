@@ -1,8 +1,18 @@
-import { RecurlyAddressDto } from '../../v3.dtos';
-import { RecurlyAccountAcquisitionDto } from '../accounts/accounts.dto';
-import { Type } from 'class-transformer';
-import { IsArray, IsBoolean, IsEnum, IsNumber, IsObject, IsOptional, IsString, MaxLength, Min, ValidateNested } from 'class-validator';
-
+import { RecurlyAddressDto } from '../../v3.dtos'
+import { RecurlyAccountAcquisitionDto } from '../accounts/accounts.dto'
+import { Type } from 'class-transformer'
+import {
+	IsArray,
+	IsBoolean,
+	IsEnum,
+	IsNumber,
+	IsObject,
+	IsOptional,
+	IsString,
+	MaxLength,
+	Min,
+	ValidateNested,
+} from 'class-validator'
 
 // Billing Info DTO
 

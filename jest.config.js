@@ -11,6 +11,7 @@ module.exports = {
 	moduleNameMapper: {
 		'^@/(.*)$': '<rootDir>/$1',
 		'^@config/(.*)$': '<rootDir>/config/$1',
+		'^@faker-js/faker$': '<rootDir>/../test-support/faker.js',
 	},
 	transform: {
 		'^.+\\.{ts|tsx}?$': [

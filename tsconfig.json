@@ -18,6 +18,8 @@
     "strict": true,
     "incremental": true,
     "skipLibCheck": true,
+    "types": ["node", "jest"],
+    "ignoreDeprecations": "6.0",
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
